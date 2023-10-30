@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100;0,300;0,400;0,600;1,100;1,300;1,400;1,600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'MuseoModerno', sans-serif;
+}
+
+.nav-bar {
+    background-color: #1e704b;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav-bar .logo {
+    padding: 1px;
+}
+
+.nav-bar .logo h1 {
+    color: white;
+    padding-left: 10px;
+}
+
+.nav-bar .nav-links {
+    margin-left: auto;
+}
+
+.nav-bar .nav-links ul {
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: end;
+}
+
+.nav-bar .nav-links li {
+    list-style-type: none;
+}
+
+.nav-bar .nav-links a {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 25px;
+}
+
+/* body */
+
+main .bdy-sec-1 {
+    height: 600px;
+    background-image: url('./../resources/images/travel-landscape.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .bdy-sec-1 .welcome-gp {
+    width: 60%;
+    text-align: center;
+    color: white;
+}
+
+main .bdy-sec-1 .welcome-gp h1 {
+    font-size: 2em;
+}
+
+main .bdy-sec-1 .welcome-gp .btn button {
+    background-color: #1e704b;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 10px;
+}
+
+main .bdy-sec-1 .welcome-gp .btn button:hover {
+    background-color: #b2a38c; 
+    color: #040503;
+}
+
+/* footer section */
+
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 100px;
+    padding-bottom: 50px;
+    background-color: #040503;
+    color: #d0c7c4;
+}
+
+footer a{
+    text-decoration: none;
+    color: #d0c7c4;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    transition: 1s;
+}
+
+footer .footer-left {
+    flex-grow: 1;
+    /* width: 50%; */
+}
+
+footer .footer-right {
+    flex-grow: 3;
+    /* width: 50%; */
+}
+
+footer .footer-left .fs-1 .footer-logo {
+    text-align: left;
+}
+
+footer .footer-left .fs-1 .footer-logo img {
+    width: 150px;
+    height: 150px;
+}
+
+footer .footer-right {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+footer .footer-right .fs-2 ul,
+footer .footer-right .fs-3 ul,
+footer .footer-right .fs-4 ul,
+footer .footer-right .fs-5 ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
+footer .footer-right .fs-2 ul li:first-of-type,
+footer .footer-right .fs-3 ul li:first-of-type,
+footer .footer-right .fs-4 ul li:first-of-type,
+footer .footer-right .fs-5 ul li:first-of-type {
+    font-weight: bold;
+}
+
+footer .footer-copyright {
+    width: 100%;
+}
+
+footer .footer-copyright h5 {
+    margin: 0px;
+    text-align: center;
+}
