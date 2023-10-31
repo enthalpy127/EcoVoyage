@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100;0,300;0,400;0,600;1,100;1,300;1,400;1,600&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -50,6 +52,48 @@ body {
     padding: 25px;
 }
 
+
+main .bdy-sec-1 {
+    height: 600px;
+    background-image: url('./../resources/images/thailand-boats-wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .bdy-sec-1 .welcome-gp {
+    width: 60%;
+    text-align: center;
+    color: white;
+}
+
+main .bdy-sec-1 .welcome-gp h1 {
+    font-size: 2em;
+}
+
+main .bdy-sec-1 .welcome-gp {
+    
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 10px;
+}
+
+main .bdy-sec-1 .welcome-gp { 
+    color: white;
+}
+
+
 .gallery__img {
     width: 100%;
     height: 100%;
@@ -77,9 +121,16 @@ body {
     font-size: 16px;
 }
 
+.text-box1 {
+    margin-right: 20px;
+}
+.text-box {
+    margin-right: 20px;
+}
+
 .wrapper-1{
     display: flex;
-    background-color: aquamarine;
+    background-color:  beige;
 
 }
 
@@ -100,9 +151,9 @@ body {
 .wrapper-2 img {
     max-width: 35%;
     position: relative;
-    left: 967px;
+    left: 972px;
     border-radius: 10px 0px 0px 10px;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .wrapper-3{
@@ -127,9 +178,9 @@ body {
 .wrapper-4 img {
     max-width: 35%;
     position: relative;
-    left: 967px;
+    left: 972px;
     border-radius: 10px 0px 0px 10px;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .wrapper-5{
@@ -154,9 +205,9 @@ body {
 .wrapper-6 img {
     max-width: 35%;
     position: relative;
-    left: 967px;
+    left: 972px;
     border-radius: 10px 0px 0px 10px;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 
