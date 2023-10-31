@@ -100,9 +100,9 @@ body {
 .wrapper-2 img {
     max-width: 35%;
     position: relative;
-    left: 972px;
+    left: 967px;
     border-radius: 10px 0px 0px 10px;
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .wrapper-3{
@@ -127,9 +127,9 @@ body {
 .wrapper-4 img {
     max-width: 35%;
     position: relative;
-    left: 972px;
+    left: 967px;
     border-radius: 10px 0px 0px 10px;
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .wrapper-5{
@@ -143,6 +143,20 @@ body {
     float: left;
     border-radius: 0px 10px 10px 0px;
     margin-right: 15px;
+}
+
+.wrapper-6{
+    display: flex;
+    background-color: aliceblue;
+
+}
+
+.wrapper-6 img {
+    max-width: 35%;
+    position: relative;
+    left: 967px;
+    border-radius: 10px 0px 0px 10px;
+    margin-left: 20px;
 }
 
 
