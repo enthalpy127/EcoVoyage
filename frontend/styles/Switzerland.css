@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100;0,300;0,400;0,600;1,100;1,300;1,400;1,600&display=swap');
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'MuseoModerno', sans-serif;
+}
+.content1{
+    background-image: url('../resources/images/Back1.webp');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.nav-bar {
+    background-color: #1e704b;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav-bar .logo {
+    padding: 1px;
+}
+
+#tripdetails{
+    background-color: #1e704b;
+}
+
+.nav-bar .logo h1 {
+    color: white;
+    padding-left: 10px;
+}
+
+.nav-bar .nav-links {
+    margin-left: auto;
+}
+
+.nav-bar .nav-links ul {
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: end;
+}
+
+.nav-bar .nav-links li {
+    list-style-type: none;
+}
+
+.nav-bar .nav-links a {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 25px;
+}
+
+
+
+#Switz-header{
+    color:white;
+    text-align: center;
+    font-size: 320%;
+}
+#btn1{
+    background-color: #1e704b;
+    color:white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 20px;
+    font-size: 30px;
+    border-style: none;
+}
+#btn1:hover{
+    background-color: white;
+    color:rgb(32, 168, 32) !important;
+    transition-duration: 0.5s;
+}
+#btn1>a{
+    text-decoration: none;
+    color:white;
+}
+#tripdetails{
+    color:white;
+}
+#timeline{
+    text-align: center;
+    font-size:34px;
+}
+h3,h4{
+    position: relative;
+    left: 100px;
+    font-size: 25px;
+    max-width: fit-content;
+}
+#booknow{
+    background-color: white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 20px;
+    font-size: 30px;
+    border-style: none;
+    color:#1e704b;
+    position: relative;
+    top:50px;
+    left:670px;
+}
+#booknow:hover{
+    color: white !important;
+    background-color:rgb(32, 168, 32);
+    transition-duration: 0.5s;
+}
+
+.swissparkdetails,
+.naturetrail,
+.lake,
+.mount,
+.pilatus{
+    position:relative;
+    left:100px;
+    top:60px;
+    font-size: 20px;
+    max-width: fit-content;
+}
+#p1{
+    position: relative;
+    top:50px;
+    width: 750px;
+}
+#p2{
+    position: relative;
+    top:43px;
+    width:750px;
+}
+
+#warning{
+    text-align: center;
+    position: relative;
+    top:50px;
+    left:300px;
+}
+#swisspark{
+    display: inline-block;
+    position: relative;
+    left:780px;
+    top:-330px;
+}
+#naturetrail{
+    position: relative;
+    top:-230px;
+    left:700px;
+    width:800px;
+}
+#day3content{
+    text-align: center;
+}
+#lake{
+    position: relative;
+    top:-210px;
+    left:700px;
+}
+
+#mount{
+    position: relative;
+    top:-210px;
+    left:700px;
+}
+
+/* footer section */
+
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 100px;
+    padding-bottom: 50px;
+    background-color: #040503;
+    color: #d0c7c4;
+}
+
+footer a{
+    text-decoration: none;
+    color: #d0c7c4;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    transition: 1s;
+}
+
+footer .footer-left {
+    flex-grow: 1;
+    /* width: 50%; */
+}
+
+footer .footer-right {
+    flex-grow: 3;
+    /* width: 50%; */
+}
+
+footer .footer-left .fs-1 .footer-logo {
+    text-align: left;
+}
+
+footer .footer-left .fs-1 .footer-logo img {
+    width: 150px;
+    height: 150px;
+}
+
+footer .footer-right {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+footer .footer-right .fs-2 ul,
+footer .footer-right .fs-3 ul,
+footer .footer-right .fs-4 ul,
+footer .footer-right .fs-5 ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
+footer .footer-right .fs-2 ul li:first-of-type,
+footer .footer-right .fs-3 ul li:first-of-type,
+footer .footer-right .fs-4 ul li:first-of-type,
+footer .footer-right .fs-5 ul li:first-of-type {
+    font-weight: bold;
+}
+
+footer .footer-copyright {
+    width: 100%;
+}
+
+footer .footer-copyright h5 {
+    margin: 0px;
+    text-align: center;
+}
