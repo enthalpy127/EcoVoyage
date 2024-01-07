@@ -1,5 +1,5 @@
 <div>
-  <link href="styles/loginpage.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='loginpage.css') }}"  />
   <div class="home-container">
     <div class="home-desktop1">
       <img
@@ -8,7 +8,7 @@
         class="home-rectangle1"
       />
       <div class="home-frame1">
-        <img src="resources/images/persoon.jpg" alt="Vector214" class="home-vector" />
+        <img src="{{ url_for('static', filename='persoon.jpg') }}" alt="Vector214" class="home-vector" />
         <span class="home-text"><span>Username or email</span></span>
         <div class="home-container1">
           <img src="/line1216-gv0h.svg" alt="Line1216" class="home-line1" />
@@ -19,7 +19,7 @@
           <div class="home-frame2">
             <div class="home-frameiconkey">
               <img
-                src="resources/images/password-icon-1024x1024-6fxz3yku.png"
+                src="{{ url_for('static', filename='password-icon-1024x1024-6fxz3yku.png') }}"
                 alt="Vector324"
                 class="home-vector1"
               />
@@ -47,7 +47,7 @@
         <span class="home-text06"><span>Login</span></span>
       </div>
       <span class="home-text08"><span>Forgot password ?</span></span>
-      <span class="home-text10"><span>Register now</span></span>
+      <span class="home-text10"><a style="text-decoration:none" href="/createCustomer">Register now</a></span>
       <div class="home-frame12">
         <img src="/line2443-6v05.svg" alt="Line2443" class="home-line2" />
         <span class="home-text12"><span>or</span></span>
@@ -92,7 +92,7 @@
         alt="Google468"
         class="home-google"
       />
-      <div class="home-frame5"><span class="home-text20">x</span></div>
+      <div class="home-frame5"><span class="home-text20"><a style="text-decoration:none" href="/">x</a></span></div>
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - EcoVoyage</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
@@ -17,10 +17,10 @@
             <div class="nav-links">
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#aboutus">About Us</a></li>
+                    <li><a href="#about">About Us</a></li>
                     <li><a href="#destination">Destination</a></li>
                     <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="#login">Login</a></li>
+                    <li><a href="/Login_page">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -41,32 +41,32 @@
         <p>Here is what our new friends have to say.</p>
         <ul class="cards">
           <li class="card">
-            <img src="resources/images/review1.jpg" alt="img">
+            <img src="{{ url_for('static', filename='review1.jpg') }}" alt="img">
             <h3>Tricia</h3>
             <p>"The most fun i've had in my whole life!"</p>
           </li>
           <li class="card">
-            <img src="resources/images/review2.jpg" alt="img">
+            <img src="{{ url_for('static', filename='review2.jpg') }}" alt="img">
             <h3>Michael</h3>
             <p>"I went cause my friend told me to. Ended up being the best time of my life!"</p>
           </li>
           <li class="card">
-            <img src="resources/images/review3.jpg" alt="img">
+            <img src="{{ url_for('static', filename='review3.jpg') }}" alt="img">
             <h3>Jessica</h3>
             <p>"Love the trips they plan, so full of activities and sightseeing"</p>
           </li>
           <li class="card">
-            <img src="resources/images/review4.jpg" alt="img">
+            <img src="{{ url_for('static', filename='review4.jpg') }}" alt="img">
             <h3>Steven</h3>
             <p>"I met my new found travelling buddy through TravelBros!"</p>
           </li>
           <li class="card">
-            <img src="resources/images/review5.jpg" alt="img">
+            <img src="{{ url_for('static', filename='review5.jpg') }}" alt="img">
             <h3>John</h3>
             <p>"100% Reccomend!"</p>
           </li>
           <li class="card">
-            <img src="resources/images/review6.jpg" alt="img">
+            <img src="{{ url_for('static', filename='review6.jpg') }}" alt="img">
             <h3>Zane</h3>
             <p>"Can't wait for the next trip to Switzerland!"</p>
           </li>
@@ -128,7 +128,7 @@
         <div class="footer-left">
             <div class="footer-section fs-1">
                 <div class="footer-logo">
-                    <img src="resources/images/Blue and White Elegant Travel Logo.png" alt="Travel Logo">
+                    <img src="{{ url_for('static', filename='Blue and White Elegant Travel Logo.png') }}" alt="Travel Logo">
                 </div>
                 <div class="footer-location">
                     <ul>

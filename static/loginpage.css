@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Ropa+Sans&family=Rubik:wght@300&display=swap');
+
 .home-container {
   width: 100%;
   display: flex;
@@ -386,7 +388,7 @@
   font-size: 24px;
   font-style: Light;
   text-align: left;
-  font-family: Sansation Light;
+  font-family: Julius Sans One;
   font-weight: 300;
   line-height: normal;
   font-stretch: normal;
