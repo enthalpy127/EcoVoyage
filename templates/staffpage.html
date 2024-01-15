@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link  rel="stylesheet" href="{{ url_for('static', filename='staffpage.css') }}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="logo" href="#home">EcoVoyage</a>
+        <div class="topnav-right">
+            <a href="#"><span class="glyphicon glyphicon-comment"></span> Chat</a>
+            <a href="#"><span class="glyphicon glyphicon-envelope"></span> Email</a>
+            <a href="#"><span class="glyphicon glyphicon-bell"></span> Notification</a>
+
+            <img src="{{ url_for('static', filename='Blue and White Elegant Travel Logo.png') }}" style="height:50px; border-radius: 50%; border: 1px solid #c7c7c7;">
+
+            <a href="#" style="padding-right: 20px;">Username<span class="glyphicon glyphicon-menu-down"></span></a>
+        </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <button class="home-button" id="home-button1">
+            <span>Overview</span>
+        </button>
+
+        <button class="home-button" id="home-button2">
+            <span>Sales</span>
+        </button>
+
+        <button class="home-button" id="home-button3">
+            <span>Bookings</span>
+        </button>
+
+        <button class="home-button" id="home-button4">
+            <span>Account Management</span>
+        </button>
+
+        <button class="home-button" id="home-button5">
+            <span>Rewards</span>
+        </button>
+    </div>
+    <script>
+        // Get the container element
+        var btnContainer = document.getElementById("sidebar");
+
+        // Get all buttons with class="btn" inside the container
+        var btns = btnContainer.getElementsByClassName("home-button");
+
+        // Loop through the buttons and add the active class to the current/clicked button
+        for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+
+            // If there's no active class
+            if (current.length > 0) {
+            current[0].className = current[0].className.replace(" active", "");
+            }
+
+            // Add the active class to the current/clicked button
+            this.className += " active";
+        });
+        }
+    </script>
+</body>
+</html>

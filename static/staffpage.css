@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300&display=swap');
+
+body {
+    margin:0;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #1E704B;
+    overflow: hidden;
+    height: 100px;
+}
+
+  /* Style the links inside the navigation bar */
+.logo {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding-left: 16px;
+    text-decoration: none;
+    font-size: xxx-large;
+    margin-top: 10px;
+    font-family: MuseoModerno;
+}
+.logo:hover{
+    text-decoration: none;
+    color: #f2f2f2;
+}
+
+.sidebar {
+    top: 0px;
+    left: 0px;
+    width: 287px;
+    height: 1024px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    flex-shrink: 0;
+    justify-content: center;
+    background-color: rgba(217, 217, 217, 1);
+    border: 0px;
+    z-index: -2;
+}
+
+
+#home-button1 {
+    top: 175px;
+  }
+
+  #home-button2 {
+    top: 256px;
+  }
+
+  #home-button1:hover, #home-button2:hover, #home-button3:hover, #home-button4:hover, #home-button5:hover{
+    color: #f2f2f2;
+    background-color: #578A73;
+  }
+
+  #home-button3 {
+    top: 337px;
+  }
+
+  #home-button4 {
+    top: 418px;
+  }
+
+  #home-button5 {
+    top: 499px;
+  }
+
+.home-button{
+    gap: 10px;
+    left: 0px;
+    width: 287px;
+    display: flex;
+    padding: 22px 56px;
+    position: absolute;
+    align-items: center;
+    flex-shrink: 0;
+    justify-content: center;
+    background-color: rgba(217, 217, 217, 1);
+    border: 0px;
+}
+
+  .active{
+    background-color: #1E704B;
+    color: #f2f2f2;
+  }
+
+  .topnav-right {
+    float: right;
+  }
+
+
+  .topnav-right a{
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    font-size: large;
+    margin-top: 10px;
+    font-family: MuseoModerno;
+
+  }
+
+  .topnav-right a:hover{
+    color: #f2f2f2;
+    background-color:#00f074bc;
+    text-decoration: none;
+  }
