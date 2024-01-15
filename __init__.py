@@ -74,5 +74,10 @@ def create_customer():
         return redirect(url_for('home'))
     return render_template('createCustomer.html', form=create_customer_form)
 
+@app.route('/test')
+def test():
+    return render_template('staffpage.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -11,6 +11,13 @@ body {
     height: 100px;
 }
 
+/* Code by Phone */
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
   /* Style the links inside the navigation bar */
 .logo {
     float: left;
@@ -19,7 +26,7 @@ body {
     padding-left: 16px;
     text-decoration: none;
     font-size: xxx-large;
-    margin-top: 10px;
+    /*margin-top: 10px;*/ /* I commented this line to make it centered */
     font-family: MuseoModerno;
 }
 .logo:hover{
