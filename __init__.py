@@ -11,9 +11,11 @@ app.static_folder = 'static'
 def home():
     return render_template('index.html')
 
+
 @app.route('/Login_page')
 def login_page():
     return render_template('Login_page.html')
+
 
 @app.route('/createUser', methods=['GET', 'POST'])
 def create_user():
@@ -63,9 +65,13 @@ def create_customer():
         customers_dict[customer.get_customer_id()] = customer
         db['Customers'] = customers_dict
 
-        db.close()
+        customers_dict = db['Customers']
+        customer = customers_dict[customer.get_customer_id()]
+        print(customer.get_first_name(), customer.get_last_name(), "was stored in user.db successfully with user_id ==",
+              customer.get_customer_id())
 
-        #return redirect(url_for('/'))
+        db.close()
+        return redirect(url_for('home'))
     return render_template('createCustomer.html', form=create_customer_form)
 
 if __name__ == '__main__':

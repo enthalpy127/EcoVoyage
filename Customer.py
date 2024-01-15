@@ -3,7 +3,7 @@ class Customer():
 
     def __init__(self, first_name, last_name, gender, email, birthdate, address):
         Customer.count_id += 1
-        self.__customer_id = ""
+        self.__customer_id = Customer.count_id
         self.__first_name = first_name
         self.__last_name = last_name
         self.__gender = gender
