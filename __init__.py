@@ -32,7 +32,9 @@ def home():
         db = shelve.open('customer.db', 'c')
         password = customer_login_form.password.data
         customers_dict = db['Customers']
-
+        if 'logout' in customer_login_form:
+            print("III")
+            session['Username'] = None
         for i in customers_dict:
             print(customers_dict[i])
             if customers_dict[i][1] == password:
