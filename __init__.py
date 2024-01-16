@@ -1,15 +1,52 @@
-from flask import Flask, render_template, request, redirect, url_for
-from Forms import CreateUserForm, CreateCustomerForm
-import shelve, User, Customer
+import Customer
+import User
+import shelve
+from datetime import timedelta
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask_session import Session
+
+from Forms import CreateUserForm, CreateCustomerForm, CustomerLoginForm
 
 app = Flask(__name__)
+app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=10)
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 app.static_folder = 'static'
+'''
+customers_dict = {}
+db = shelve.open('customer.db', 'c')
 
-
-@app.route('/')
+try:
+    customers_dict = db['Customers']
+except:
+    print("Error in retrieving Customers from customer.db.")
+customers_dict[]'''
+@app.route('/', methods=['GET','POST'])
 def home():
-    return render_template('index.html')
+    error= None
+    customer_login_form =  CustomerLoginForm(request.form)
+    if request.method == 'POST':
+        print("login form ok")
+        customers_dict = {}
+        db = shelve.open('customer.db', 'c')
+        password = customer_login_form.password.data
+        customers_dict = db['Customers']
+
+        for i in customers_dict:
+            print(customers_dict[i])
+            if customers_dict[i][1] == password:
+                print(f"Customer {customers_dict[i][0]} logged in")
+                session['Username'] = customer_login_form.username.data
+                session.permanent = True
+            else:
+                print("Customer not found")
+                print(password)
+                print(customers_dict[i][1])
+                error = "Username or password incorrect!"
+        db.close()
+
+    return render_template('index.html',error=error)
 
 
 @app.route('/Login_page')
@@ -81,3 +118,4 @@ def test():
 
 if __name__ == '__main__':
     app.run(debug=True)
+session['Username'] = None

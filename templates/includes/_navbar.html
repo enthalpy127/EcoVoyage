@@ -5,6 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='_navbar style.css') }}">
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'MuseoModerno', sans-serif;
+}
+
+.nav-bar {
+    background-color: #1e704b;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav-bar .logo {
+    padding: 1px;
+}
+
+.nav-bar .logo h1 {
+    color: white;
+    padding-left: 10px;
+}
+
+.nav-bar .nav-links {
+    margin-left: auto;
+}
+
+.nav-bar .nav-links ul {
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: end;
+}
+
+.nav-bar .nav-links li {
+    list-style-type: none;
+}
+
+.nav-bar .nav-links a {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 25px;
+}
+.nav-bar .nav-links #loginbtn {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 20px;
+    background-color:#1e704b;
+    border:none;
+    cursor:pointer;
+    font-family: 'MuseoModerno', sans-serif;
+    font-size:20px;
+}
+
+h1{
+    text-align: center;
+}
+.login{
+    background-color:white;
+    text-align:center;
+    width:800px;
+    position:relative;
+}
+#login>form{
+    color: green;
+    position: relative;
+    text-align: center;
+    width:fit-content;
+}
+.background1 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+
+.login {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+}
+input[type=text]{
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+label{
+    font-size: 20px;
+}
+input[type=submit]{
+    background-color: green;
+    color:white;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 100px;
+    height:30px;
+}
+.api{
+    position: relative;
+    text-align: center;
+    width:325px;
+    color: white;
+    cursor: pointer;
+}
+
+    </style>
 </head>
 <body>
     <header>
@@ -14,14 +136,60 @@
             </div>
             <div class="nav-links">
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#aboutus">About Us</a></li>
+                    {% if session['Username']  %}
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
                     <li><a href="#destination">Destination</a></li>
                     <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="/Login_page">/createUser</a></li>
+                    <li><a>{{ session['Username'] }}</a></li>
+                    {% else %}
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#destination">Destination</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <button id="loginbtn" onclick="open_login()">Login</button>
+                    {% endif %}
                 </ul>
             </div>
         </div>
     </header>
+    <div id="loginpage" class="background1" style="display: none;">
+    <div class="login" id="user_login">
+        <h1>Login Page</h1>
+        {% if error %}
+            <p class=error><strong>Error:</strong> {{ error }}
+            <button onclick="close_login()" class="X" style="z-index:1;position:relative;left:225px;top:-80px;border:none;background-color:white;cursor:pointer;font-size:22px;"> X </button>
+        {% else %}
+        <button onclick="close_login()" class="X" style="z-index:1;position:relative;left:375px;top:-70px;border:none;background-color:white;cursor:pointer;font-size:22px;"> X </button>
+        {% endif %}
+        <form method="POST"><fieldset>
+            <legend>Login</legend>
+            <label>Username:</label>
+            <input type="text" for="username" name="username" placeholder="Username" required><br><br>
+            <label>Password:</label>
+            <input type="text" for="password" name="password" placeholder="password" pattern="[A-Za-z]{8}[0-9]{2}" required><br><br>
+            <input type="submit" value="Login">
+        </fieldset>
+        </form>
+        <button class="api" style="background-color:rgb(255 4 4);"><h3>Login with Google</h3></button><br><br>
+        <button class="api" style="background-color: rgb(0 29 184);"><h3>Login with Twitter</h3></button><br><br>
+        <button class="api" style="background-color: rgb(0 178 255);"><h3>Login with Facebook</h3></button>
+    </div></div>
+
+    <script>
+        function open_login() {
+        document.getElementById("loginpage").style.display = "block";
+        }
+
+        function close_login() {
+            document.getElementById("loginpage").style.display = "none";
+        }
+        var modal = document.getElementById("loginpage")
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

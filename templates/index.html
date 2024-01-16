@@ -6,25 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - EcoVoyage</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
-    <header>
-        <div class="nav-bar">
-            <div class="logo">
-                <h1>EcoVoyage</h1>
-            </div>
-            <div class="nav-links">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#destination">Destination</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="/Login_page">Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    {% block navbar %}
+    {% include 'includes/_navbar.html' %}
+    {% endblock %}
     <main>
         <section class="bdy-sec-1">
             <div class="welcome-gp">
@@ -192,6 +180,8 @@
             <h5>© 2023 EcoVoyage Company. All rights reserved.</h5>
         </div>
     </footer>
+
+
 </body>
 
 </html>
