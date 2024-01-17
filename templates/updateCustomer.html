@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Library Loan System - Create Customer{% endblock %}
+{% block title %}Update Customer{% endblock %}
 {% block content %}
 {% from "includes/_formHelper.html" import render_field %}
-<h1 class="display-4">Create Customer</h1>
 
+<h1 class="display-4">Update Customer</h1>
 <form method="POST" action="">
     <div class="form-group">
         {{ render_field(form.first_name, class="form-control") }}

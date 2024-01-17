@@ -20,7 +20,7 @@ body{
     background-color: #1e704b;
 }
 form{
-    height: 520px;
+    height: 430px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -114,7 +114,7 @@ button{
 </head>
 <body>
     <form>
-        <h3>Login Here</h3>
+        <h3>Staff Login</h3>
 
         <label for="username">Username</label>
         <input type="text" placeholder="Email or Phone" id="username">
@@ -122,17 +122,8 @@ button{
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password">
 
-        <button onclick="login()">Log In</button>
-        <p id="signup-notice">Don't have an account? <a href="/createCustomer">Sign Up</a></p>
-        <div class="social">
-          <div class="go"><i class="fab fa-google"></i> Login with Google</div>
-        </div>
-        <p id="staff-login-notice">Click here for <a href="/Staff_Login_page">Staff Login</a></p>
+        <button>Log In</button>
+
     </form>
-    <script>
-      function login() {
-          windows.location.herf = "{{ url_for('login') }}";
-      }
-    </script>
 </body>
 </html>

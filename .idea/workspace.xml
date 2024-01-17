@@ -5,11 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66824c3f-a395-4c0d-8f0a-c6ad91759f0e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/error_found.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/retrieveData.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/updateCustomer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/updateUser.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Login/Customer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Login/Forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/Login/User.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/staffpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/staffpage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer.db.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer.db.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer.db.dir" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Denmark.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Destinations/Denmark.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Login_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Login_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Switzerland.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Destinations/Switzerland.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Thailand.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Destinations/Thailand.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/createCustomer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/createCustomer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/createUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/createUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/includes/_navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/_navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reviews.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,12 +43,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "enthalpy127"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;enthalpy127&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -44,6 +60,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2aabwypNDO3OKkiq9V3hNkiCcGh" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -55,15 +74,17 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/NYP Stuff/APP DEV/project website/EcoVoyage&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/myatk/CLONE_PROJ/EcoVoyage&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\myatk\DEV\EcoVoyage\templates\Destinations" />
+      <recent name="C:\Users\myatk\DEV\EcoVoyage\Login" />
       <recent name="D:\NYP Stuff\APP DEV\project website\EcoVoyage\templates\includes" />
       <recent name="D:\NYP Stuff\APP DEV\project website\EcoVoyage\templates" />
       <recent name="D:\NYP Stuff\APP DEV\project website\EcoVoyage\static" />
-      <recent name="D:\NYP Stuff\APP DEV\project website\EcoVoyage" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

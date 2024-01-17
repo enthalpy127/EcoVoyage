@@ -1,15 +1,29 @@
+import uuid
+
+
+def generate_random_id():
+    # Generate a random UUID (version 4)
+    random_id = uuid.uuid4()
+
+    # Convert the UUID to a string and remove hyphens
+    id_str = str(random_id).replace('-', '')
+
+    return id_str
+
+
 class User:
     count_id = 0
 
     # initializer method
-    def __init__(self, first_name, last_name, gender, membership, remarks):
-        User.count_id += 1
-        self.__user_id = User.count_id
+    def __init__(self, first_name, last_name, gender, membership, remarks, password=''):
+        User.count_id += 1 # This shit is useless
+        self.__user_id = generate_random_id()
         self.__first_name = first_name
         self.__last_name = last_name
         self.__gender = gender
         self.__membership = membership
         self.__remarks = remarks
+        self.__password = password
 
     # accessor methods
     def get_user_id(self):
@@ -30,6 +44,9 @@ class User:
     def get_remarks(self):
         return self.__remarks
 
+    def get_password(self):
+        return self.__password
+
     # mutator methods
     def set_user_id(self, user_id):
         self.__user_id = user_id
@@ -48,3 +65,6 @@ class User:
 
     def set_remarks(self, remarks):
         self.__remarks = remarks
+
+    def set_password(self, password):
+        self.__password = password
