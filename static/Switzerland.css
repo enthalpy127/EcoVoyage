@@ -11,7 +11,7 @@ body {
     font-family: 'MuseoModerno', sans-serif;
 }
 .content1{
-    background-image: url('../resources/images/Back1.webp');
+    background-image: url('/static/Back1.webp');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;

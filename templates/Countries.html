@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries</title>
+    <style>
+        #search{
+            text-align:center;
+        }
+        .imgs{
+            width:200px;
+            float:left;
+            margin-right:10px;
+        }
+        .div1{
+            background:burlywood;
+        }
+        #myMenu{
+            list-style-type: none;
+        }
+        #denmark{
+            position:relative;
+        }
+        .denmark-content{
+            position:relative;
+            display: block;
+        }
+        .div1 >li > a{
+            color:green;
+            list-style-type: none;
+            text-decoration: none;
+            font-size: large;
+            font-weight:bold;
+        }
+        .div1 > li>a:hover{
+            color:white;
+            animation-duration: 2s;
+        }
+        button>a{
+            color:white;
+            text-decoration: none;
+            padding:20px;
+            padding-top: 5px;;
+        }
+        button{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    {% block navbar %}
+    {% include 'includes/_navbar.html' %}
+    {% endblock %}
+    <h1>Countries</h1>
+    <div id="search">
+        <label>Enter a country that you want to travel to: </label>
+        <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search for a tour.." title="Type in a category">
+    </div>
+    <ul id="myMenu">
+        <div class="div1">
+            <img class="imgs" src="/static/zootopia-webshow-short_original.jpg" class="gallery__img" alt="Image 1">
+            <li id="denmark" class="denmark-content"><a href="/denmark">Denmark</a></li>
+            <p class="denmark-content">All you need is love and a passport.</p>
+            <button><a href="/denmark">Learn More</a></button>
+            <br><br>
+        </div><br>
+        <div class="div1">
+            <img class="imgs" src="/static/botanicgarden.jpg" class="gallery__img" alt="Image 1">
+            <li><a href="/singapore">Singapore</a></li>
+            <p>Come join us in a wonderful trip around Singapore!</p>
+            <button><a href="/singapore">Learn More</a></button>
+            <br><br>
+        </div><br>
+        <div class="div1">
+            <img class="imgs" src="/static/SwissPark.webp" class="gallery__img" alt="Image 1">
+            <li><a href="/switzerland">Switzerland</a></li>
+            <p>Join us in our journey to explore Switzerland!</p>
+            <button><a href="/switzerland">Learn More</a></button>
+            <br><br>
+        </div><br>
+        <div class="div1">
+            <img class="imgs" src="/static/similan-islands.jpg" class="gallery__img" alt="Image 1">
+            <li><a href="/thailand">Thailand</a></li>
+            <p>Wherever you go becomes a part of you somehow</p>
+            <button><a href="/thailand">Learn More</a></button>
+            <br><br>
+        </div>
+      </ul>
+    {% block footer %}
+    {% include 'includes/_footer.html' %}
+    {% endblock %}
+    <script>
+    function myFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("mySearch");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myMenu");
+        li = ul.getElementsByClassName("div1");
+        for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      }
+    </script>
+</body>
+</html>

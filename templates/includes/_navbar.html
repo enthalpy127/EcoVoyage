@@ -101,7 +101,7 @@ h1{
   margin: 5% auto 15% auto;
   border: 1px solid #888;
 }
-input[type=text]{
+input[type=text],input[type=email],input[type=number],input[type=date],input[type=tel],#textarea1,input[type=password]{
     border-radius: 5px;
     padding-left: 10px;
     padding-top: 10px;
@@ -129,6 +129,55 @@ input[type=submit]{
     width:50%;
     height:100%;    
 }
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  font-size: 16px;
+  border: none;
+  width:135px;
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  display: inline-block;
+  left:0.01px;
+  top:425px;
+  cursor:pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #f1f1f1;
+  width:inherit;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 30px;
+  text-decoration: none;
+  display: block;
+}
+#login_choice {
+    position:relative;
+}
+
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+h1>a, h1>a:hover{
+    text-decoration: none;
+    color: white;
+}
 
 
     </style>
@@ -137,21 +186,21 @@ input[type=submit]{
     <header>
         <div class="nav-bar">
             <div class="logo">
-                <h1>EcoVoyage</h1>
+                <h1><a href="/">EcoVoyage</a></h1>
             </div>
             <div class="nav-links">
                 <ul>
                     {% if session['Username']  %}
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#destination">Destination</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/booknow">Book Now</a></li>
+                    <li><a href="/countries">Destinations</a></li>
+                    <li><a href="/templates/index.html#contact">Contact Us</a></li>
                     <button id="loginbtn" onclick="open_logout()">{{ session['Username'] }}</button>
                     {% else %}
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#destination">Destination</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/booknow"">Book Now</a></li>
+                    <li><a href="/countries">Destinations</a></li>
+                    <li><a href="/#contact">Contact Us</a></li>
                     <button id="loginbtn" onclick="open_login()">Login</button>
                     {% endif %}
                 </ul>
@@ -172,20 +221,27 @@ input[type=submit]{
             <label>Username:</label>
             <input type="text" for="username" name="username" placeholder="Username" required><br><br>
             <label>Password:</label>
-            <input type="text" for="password" name="password" placeholder="password" pattern="[A-Za-z]{8}[0-9]{2}" required><br><br>
+            <input type="password" for="password" name="password" placeholder="password" pattern="[A-Za-z]{8}[0-9]{2}" required><br><br>
             <input type="submit" value="Login">
         </fieldset>
+        <div class="dropdown" id="dropdown">
+            <input style="cursor:pointer" id="changelogin" type="text" for="changelogin" name="changelogin" class="dropbtn" placeholder="changelogin" value="customer" readonly>
+            <div class="dropdown-content" id="login_choice">
+              <a id="login_customer" onclick="changecustomer()">Customer</a>
+              <a id="login_staff" onclick="changestaff()">Staff</a>
+            </div>
+          </div>
         </form>
-        <button class="api" style="background-color:rgb(255 4 4);"><h3>Login with Google</h3></button><br><br>
-        <button class="api" style="background-color: rgb(0 29 184);"><h3>Login with Twitter</h3></button><br><br>
-        <button class="api" style="background-color: rgb(0 178 255);"><h3>Login with Facebook</h3></button>
-    </div></div>
+        <p id="signup-notice">Don't have an account? <a href="/createCustomer">Sign Up</a></p>
+        <button class="api" id="api1" style=" display: inline-block; background-color:rgb(255 4 4);"><h3>Login with Google</h3></button><br><br>
+    </div>
+    </div>
     <div id="logoutpage" class="background1" style="display: none;opacity: 0.96;">
         <div class="login" id="user_login">
             <h1>Are you sure to log out?</h1>
             <button onclick="close_logout()" class="X" style="z-index:1;position:relative;left:375px;top:-70px;border:none;background-color:white;cursor:pointer;font-size:22px;"> X </button>
             <form method="POST"><fieldset class="field">
-                <input class="cancel" type="submit" value="logout">
+                <input for="logout" name="logout" class="cancel" type="submit" value="logout">
             </fieldset>
             </form>
         </div></div>
@@ -215,6 +271,18 @@ input[type=submit]{
             if (event.target == modal1) {
                 modal1.style.display = "none";
             }
+        }
+        function changestaff(){
+            document.getElementById("changelogin").value = 'staff'
+            document.getElementById("api1").style.display = "none"
+            document.getElementById("dropdown").style.top = '338px'
+            document.getElementById("signup-notice").style.display = 'none'
+        }
+        function changecustomer(){
+            document.getElementById("changelogin").value = 'customer'
+            document.getElementById("api1").style.display = "inline-block"
+            document.getElementById("dropdown").style.top = '425px'
+            document.getElementById("signup-notice").style.display = 'block'
         }
     </script>
 </body>

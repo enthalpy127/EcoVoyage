@@ -55,7 +55,7 @@ body {
 
 main .bdy-sec-1 {
     height: 600px;
-    background-image: url('./../resources/images/thailand-boats-wallpaper.jpg');
+    background-image: url('/static/thailand-boats-wallpaper.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

@@ -18,7 +18,7 @@
             <div class="welcome-gp">
                 <h1>Embark on a journey of a lifetime, where every destination becomes a story, and every moment is an adventure waiting to be told.</h1>
                 <div class="btn">
-                    <button>Explore</button>
+                    <button><a href="/countries" style="text-decoration:none;color:white;">Explore</a></button>
                 </div>
             </div>
         </section>
@@ -112,74 +112,9 @@
         </div>
       </section>
 
-    <footer>
-        <div class="footer-left">
-            <div class="footer-section fs-1">
-                <div class="footer-logo">
-                    <img src="{{ url_for('static', filename='Blue and White Elegant Travel Logo.png') }}" alt="Travel Logo">
-                </div>
-                <div class="footer-location">
-                    <ul>
-                        <li>300 Washington St., Ste. 713, Newton, MA 02458</li>
-                        <li>1-800-776-0188 | Mon.–Fri., 9:00 a.m.–5:00 p.m. EST.</li>
-                        <li>info@earthwatch.org</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-right">
-            <div class="footer-section fs-2">
-                <ul>
-                    <li>ABOUT</li>
-                    <hr>
-                    <li><a href="#">Mission & Values</a></li>
-                    <li><a href="#">Our History</a></li>
-                    <li><a href="#">Leadership</a></li>
-                    <li><a href="#">Annual Report</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
-            <div class="footer-section fs-3">
-                <ul>
-                    <li>EXPLORE</li>
-                    <hr>
-                    <li><a href="#">Expeditions</a></li>
-                    <li><a href="#">Research</a></li>
-                    <li><a href="#">Education</a></li>
-                    <li><a href="#">Partnerships</a></li>
-                    <li><a href="#">Stories</a></li>
-                    <li><a href="#">Support Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section fs-4">
-                <ul>
-                    <li>CONNECT</li>
-                    <hr>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">YouTube</a></li>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                </ul>
-            </div>
-            <div class="footer-section fs-5">
-                <ul>
-                    <li>POLICIES</li>
-                    <hr>
-                    <li><a href="#">Safety Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Insurance Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <h5>© 2023 EcoVoyage Company. All rights reserved.</h5>
-        </div>
-    </footer>
+      {% block footer %}
+      {% include 'includes/_footer.html' %}
+      {% endblock %}
 
 
 </body>

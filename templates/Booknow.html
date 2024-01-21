@@ -1,0 +1,128 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+    <style>
+        form{
+            text-align: center;
+        }
+        .options{
+            text-align: left;
+            position: relative;
+            left:700px;
+            max-width: fit-content;
+        }
+        #formfield{
+            position:relative;
+            display:flex;
+            align-items:start;
+            left:550px;
+            max-width: fit-content;
+        }
+    </style>
+</head>
+<body onload="mindate()">
+    {% block navbar %}
+    {% include 'includes/_navbar.html' %}
+    {% endblock %}
+
+<h1 class="display-4">Book Now</h1>
+
+<form method="POST" action="">
+    <label>First name:</label>
+    <input type="text" for="firstname" name="firstname" placeholder="First Name" required>
+    <label>Last Name:</label>
+    <input type="text" for="lastname" name="lastname" placeholder="Last Name" required><br><br>
+    <label>Email:</label>
+    <input type="email" for="email" name="email" placeholder="example@mail.com" required>
+    <label>Phone Number:</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{8}" placeholder="12345678" required>
+    <br><br>
+    <label>Airport:</label>
+    <input type="text" for="airport" name="airport" placeholder="Airport for departure" required>
+    <br><br>
+    <h2>Destination:</h2>
+    <div class="options">
+    <input type="radio" id="denmark" name="destination" value="denmark">
+    <label for="denmark">Denmark</label><br>
+    <input type="radio" id="singapore" name="destination" value="singapore">
+    <label for="singapore">Singapore</label><br>
+    <input type="radio" id="switzerland" name="destination" value="switzerland">
+    <label for="switzerland">Switzerland</label><br>
+    <input type="radio" id="thailand" name="destination" value="thailand">
+    <label for="thailand">Thailand</label></div><br><br>
+    <label>Departure Date:</label>
+    <input type="date" for="departure" name="departure" id="departure" required><br><br>
+    <Label>Number of adults:</Label>
+    <input type="number" min="1" max="20" name="adults" for="adults" value="1" required>
+    <Label>Number of children:</Label>
+    <input type="number" min="0" max="30" name="children" for="children" value="0" required><br><br>
+    <div id="formfield">
+        <label>Any Comments/Special Requests:</label>
+        <textarea id="textarea1"></textarea>
+    </div><br><br>
+    <div class="card">
+        <label>Card Number:</label>
+        <input type="text" name="cardnumber" placeholder="XXXX XXXX XXXX" for="cardnumber" pattern="[0-9]{12}" required style="width:200px;"><br><br>
+        <label>Card Holder:</label>
+        <input type="text" name="cardholder" placeholder="JOHN DOE" for="cardholder" required> <br><br>
+        <label>Card Expiry Date:</label>
+        <input id="expirydate" type="text" name="cardexpiry" placeholder="00/00" pattern="(?:0[1-9]|1[0-2])/[0-9]{2}" for="cardexpiry" max="12" required onkeyup="checkvalue()"><br><br>
+        <label>Card Security Code:</label>
+        <input type="text" name="cardsec" placeholder="000" for="cardsec" pattern="[0-9]{3}" required> 
+    </div>
+    <br><br><input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+
+{% block footer %}
+{% include 'includes/_footer.html' %}
+{% endblock %}
+</body>
+    <script>
+        function mindate(){
+            let today = new Date(),
+                day = today.getDate() + 7,
+                month = today.getMonth()+1, 
+                year = today.getFullYear();
+                if(day<10){
+                    day='0'+day
+                } 
+                if(month<10){
+                    month='0'+month
+                }
+            today = year+'-'+month+'-'+day;
+
+            document.getElementById("departure").setAttribute("min",today)
+            console.log(document.getElementById("departure"))
+        }
+        function checkvalue(){
+            var check1 = document.getElementById("expirydate").value
+            console.log(check1)
+            if (check1[0] > 2){
+                document.getElementById('expirydate').value = 0 + check1[0]
+            }
+            if (check1[0] == 1){
+                if (check1[1]>2){
+                    document.getElementById('expirydate').value = check1[0]
+                    console.log(check1)
+                }
+            }
+            if (check1[3] > 2){
+                document.getElementById('expirydate').value = check1[0] + check1[1]+'/' + 0 + check1[4]
+            }
+            if (check1[0] == 1){
+                if (check1[4]>2){
+                    document.getElementById('expirydate').value = check1[0] + check1[1]+'/' + 1
+                    console.log(check1)
+                }
+            }
+            if (check1.length==3){
+                if (check1[2] != '/'){
+                    document.getElementById('expirydate').value = check1[0]+check1[1]+ '/'
+                }
+            }
+        }
+    </script>
+
+</html>

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}Library Loan System - Retrieve Users{% endblock %}
+{% block content %}
+<h1 class="display-4">Retrieve Users</h1>
+<div>
+    {% if count == 0 %}
+    <p>There are no users.</p>
+    {% elif count == 1 %}
+    <p>There is 1 user.</p>
+    {% else %}
+    <p>There are {{ count1 }} users.</p>
+    {% endif %}
+</div>
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Membership</th>
+            <th>Remarks</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users_list %}
+        <tr>
+            <td>{{ user.get_user_id() }}</td>
+            <td>{{ user.get_first_name() }}</td>
+            <td>{{ user.get_last_name() }}</td>
+            <td>{{ user.get_gender() }}</td>
+            {% if user.get_membership() == "F" %}
+            <td>Fellow</td>
+            {% elif user.get_membership() == "S" %}
+            <td>Senior</td>
+            {% elif user.get_membership() == "P" %}
+            <td>Professional</td>
+            {% endif %}
+            <td>{{ user.get_remarks() }}</td>
+            <td><a href="/updateUser/{{ user.get_user_id() }}" class="btn btn-warning">Update</a></td>
+            <td>
+                <form action="{{ url_for('delete_user', id=user.get_user_id()) }}" method="POST">
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!--Customers Part-->
+
+<h1 class="display-4">Retrieve Customers</h1>
+<div>
+    {% if count == 0 %}
+    <p>There are no customers.</p>
+    {% elif count == 1 %}
+    <p>There is 1 customer.</p>
+    {% else %}
+    <p>There are {{ count2 }} customers.</p>
+    {% endif %}
+</div>
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Date Joined</th>
+            <th>Address</th>
+            <th>Membership</th>
+            <th>Remarks</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers_list %}
+        <tr>
+            <td>{{ customer.get_customer_id() }}</td>
+            <td>{{ customer.get_first_name() }}</td>
+            <td>{{ customer.get_last_name() }}</td>
+            <td>{{ customer.get_gender() }}</td>
+            <td>{{ customer.get_email() }}</td>
+            <td>{{ customer.get_date_joined() }}</td>
+            <td>{{ customer.get_address() }}</td>
+            {% if customer.get_membership() == "F" %}
+            <td>Fellow</td>
+            {% elif customer.get_membership() == "S" %}
+            <td>Senior</td>
+            {% elif customer.get_membership() == "P" %}
+            <td>Professional</td>
+            {% endif %}
+            <td>{{ customer.get_remarks() }}</td>
+            <td><a href="/updateCustomer/{{ customer.get_customer_id() }}" class="btn btn-warning">Update</a></td>
+            <td>
+                <form action="{{ url_for('delete_customer', id=customer.get_customer_id()) }}" method="POST">
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
