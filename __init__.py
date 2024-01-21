@@ -7,6 +7,7 @@ from flask_session import Session
 from flask_mail import Mail, Message
 
 from Forms import CreateUserForm, CreateCustomerForm, CustomerLoginForm
+import traceback
 
 app = Flask(__name__)
 app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=10)
@@ -127,56 +128,8 @@ def countriespage():
         #login(session)end
     return render_template("Countries.html")
 
-@app.route('/Login_page', methods=['GET','POST'])
+@app.route('/Login_page')
 def login_page():
-    #login(session)
-    error= None
-    customer_login_form =  CustomerLoginForm(request.form)
-    print(customer_login_form.changelogin.data)
-    print(customer_login_form.data)
-    if customer_login_form.logout.data != None:
-            print("III")
-            session['Username'] = None
-    if request.method == 'POST' and (customer_login_form.changelogin.data == 'customer'):
-        print("login form ok")
-        customers_dict = {}
-        db = shelve.open('customer.db', 'c')
-        password = customer_login_form.password.data
-        customers_dict = db['Customers']
-        print(customers_dict)
-        for i in customers_dict:
-            print(customers_dict[i])
-            if customers_dict[i].get_password() == password:
-                print(f"Customer {customers_dict[i].get_username} logged in")
-                session['Username'] = customer_login_form.username.data
-                session.permanent = True
-            else:
-                print(customers_dict[i].get_password())
-                print(password)
-                print(customers_dict[i])
-                error = "Username or password incorrect!"
-        db.close()
-    elif request.method == 'POST' and (customer_login_form.changelogin.data == 'staff'):
-        staff_dict = {}
-        db = shelve.open('staff.db', 'c')
-        password = customer_login_form.password.data
-        staff_dict = db['Staff']
-        if 'logout' in customer_login_form:
-            print("III")
-            session['Username'] = None
-        for i in staff_dict:
-            print(staff_dict[i])
-            if staff_dict[i][1] == password:
-                print(f"Staff {staff_dict[i][0]} logged in")
-                session['Username'] = customer_login_form.username.data
-                session.permanent = True
-            else:
-                print("Staff not found")
-                print(password)
-                print(staff_dict[i][1])
-                error = "Username or password incorrect!"
-        db.close()
-        #login(session)end
     return render_template('Login_page.html')
 
 @app.route('/denmark', methods=['GET','POST'])
@@ -449,8 +402,12 @@ def create_user():
         except:
             print("Error in retrieving Users from user.db.")
 
-        user = User.User(create_user_form.first_name.data, create_user_form.last_name.data,
-                         create_user_form.gender.data, create_user_form.membership.data, create_user_form.remarks.data)
+        user = User.User(create_user_form.first_name.data,
+                         create_user_form.last_name.data,
+                         create_user_form.gender.data,
+                         create_user_form.membership.data,
+                         create_user_form.remarks.data,
+                         create_user_form.password.data)
         users_dict[user.get_user_id()] = user
         db['Users'] = users_dict
 
@@ -532,13 +489,8 @@ def create_customer():
         customer = Customer.Customer(create_customer_form.first_name.data,
                                      create_customer_form.last_name.data,
                                      create_customer_form.gender.data,
-                                     create_customer_form.membership.data,
-                                     create_customer_form.remarks.data,
-                                     create_customer_form.email.data,
-                                     create_customer_form.birthday.data,
-                                     create_customer_form.address.data,
-                                     create_customer_form.username.data,
-                                     create_customer_form.password.data)
+                                     create_customer_form.email.data, create_customer_form.birthdate.data,
+                                     create_customer_form.address.data)
         customers_dict[customer.get_customer_id()] = customer
         db['Customers'] = customers_dict
 
@@ -550,69 +502,6 @@ def create_customer():
         db.close()
         return redirect()
     return render_template('createCustomer.html', form=create_customer_form)
-
-
-@app.route('/booknow' ,methods=['GET', 'POST'])
-def booknow():
-
-    #login(session)
-    error= None
-    customer_login_form =  CustomerLoginForm(request.form)
-    print(customer_login_form.changelogin.data)
-    print(customer_login_form.data)
-    if customer_login_form.logout.data != None:
-            print("III")
-            session['Username'] = None
-    if request.method == 'POST' and (customer_login_form.changelogin.data == 'customer'):
-        print("login form ok")
-        customers_dict = {}
-        db = shelve.open('customer.db', 'c')
-        password = customer_login_form.password.data
-        customers_dict = db['Customers']
-        print(customers_dict)
-        for i in customers_dict:
-            print(customers_dict[i])
-            if customers_dict[i].get_password() == password:
-                print(f"Customer {customers_dict[i].get_username} logged in")
-                session['Username'] = customer_login_form.username.data
-                session.permanent = True
-            else:
-                print(customers_dict[i].get_password())
-                print(password)
-                print(customers_dict[i])
-                error = "Username or password incorrect!"
-        db.close()
-    elif request.method == 'POST' and (customer_login_form.changelogin.data == 'staff'):
-        staff_dict = {}
-        db = shelve.open('staff.db', 'c')
-        password = customer_login_form.password.data
-        staff_dict = db['Staff']
-        if 'logout' in customer_login_form:
-            print("III")
-            session['Username'] = None
-        for i in staff_dict:
-            print(staff_dict[i])
-            if staff_dict[i][1] == password:
-                print(f"Staff {staff_dict[i][0]} logged in")
-                session['Username'] = customer_login_form.username.data
-                session.permanent = True
-            else:
-                print("Staff not found")
-                print(password)
-                print(staff_dict[i][1])
-                error = "Username or password incorrect!"
-        db.close()
-        #login(session)end
-
-    if request.method == 'POST':
-        data = request.form
-        print(data.values)
-        msg = Message('Hello', sender = 'xuanhongtay@gmail.com', recipients = [f'{data["email"]}'])
-        msg.body = f"Dear Mr/Mrs {data['lastname']}, \n You have succesfully booked our trip to {data['destination']}. \nThe departure date will be on {data['departure']} at {data['airport']}. \n Thank you for choosing to fly with EcoVoyage!"
-        mail.send(msg)
-        return render_template('index.html')
-
-    return render_template('Booknow.html')
 
 @app.route('/test')
 def test():
