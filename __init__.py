@@ -1,5 +1,8 @@
-import Customer
-import User
+
+import sys
+sys.path.append('../Login')
+from Login import User
+from Login import Customer
 import shelve
 from datetime import timedelta
 from flask import Flask, render_template, request, redirect, url_for, session
@@ -182,7 +185,7 @@ def denmark():
                 error = "Username or password incorrect!"
         db.close()
         #login(session)end
-    return render_template('Denmark.html')
+    return render_template('/Destinations/Denmark.html')
 
 @app.route('/singapore', methods=['GET','POST'])
 def singapore():
@@ -234,7 +237,7 @@ def singapore():
                 error = "Username or password incorrect!"
         db.close()
         #login(session)end
-    return render_template('Singapore.html')
+    return render_template('/Destinations/Singapore.html')
 
 @app.route('/switzerland', methods=['GET','POST'])
 def switzerland():
@@ -286,7 +289,7 @@ def switzerland():
                 error = "Username or password incorrect!"
         db.close()
         #login(session)end
-    return render_template('Switzerland.html')
+    return render_template('/Destinations/Switzerland.html')
 
 @app.route('/thailand', methods=['GET','POST'])
 def thailand():
@@ -338,7 +341,7 @@ def thailand():
                 error = "Username or password incorrect!"
         db.close()
         #login(session)end
-    return render_template('Thailand.html')
+    return render_template('/Destinations/Thailand.html')
 
 @app.route('/createUser', methods=['GET', 'POST'])
 def create_user():
@@ -502,6 +505,70 @@ def create_customer():
         db.close()
         return redirect()
     return render_template('createCustomer.html', form=create_customer_form)
+
+
+@app.route('/booknow' ,methods=['GET', 'POST'])
+def booknow():
+
+    #login(session)
+    error= None
+    customer_login_form =  CustomerLoginForm(request.form)
+    print(customer_login_form.changelogin.data)
+    print(customer_login_form.data)
+    if customer_login_form.logout.data != None:
+            print("III")
+            session['Username'] = None
+    if request.method == 'POST' and (customer_login_form.changelogin.data == 'customer'):
+        print("login form ok")
+        customers_dict = {}
+        db = shelve.open('customer.db', 'c')
+        password = customer_login_form.password.data
+        customers_dict = db['Customers']
+        print(customers_dict)
+        for i in customers_dict:
+            print(customers_dict[i])
+            if customers_dict[i].get_password() == password:
+                print(f"Customer {customers_dict[i].get_username} logged in")
+                session['Username'] = customer_login_form.username.data
+                session.permanent = True
+            else:
+                print(customers_dict[i].get_password())
+                print(password)
+                print(customers_dict[i])
+                error = "Username or password incorrect!"
+        db.close()
+    elif request.method == 'POST' and (customer_login_form.changelogin.data == 'staff'):
+        staff_dict = {}
+        db = shelve.open('staff.db', 'c')
+        password = customer_login_form.password.data
+        staff_dict = db['Staff']
+        if 'logout' in customer_login_form:
+            print("III")
+            session['Username'] = None
+        for i in staff_dict:
+            print(staff_dict[i])
+            if staff_dict[i][1] == password:
+                print(f"Staff {staff_dict[i][0]} logged in")
+                session['Username'] = customer_login_form.username.data
+                session.permanent = True
+            else:
+                print("Staff not found")
+                print(password)
+                print(staff_dict[i][1])
+                error = "Username or password incorrect!"
+        db.close()
+        #login(session)end
+
+    if request.method == 'POST':
+        data = request.form
+        print(data.values)
+        msg = Message('Hello', sender = 'xuanhongtay@gmail.com', recipients = [f'{data["email"]}'])
+        msg.body = f"Dear Mr/Mrs {data['lastname']}, \n You have succesfully booked our trip to {data['destination']}. \nThe departure date will be on {data['departure']} at {data['airport']}. \n Thank you for choosing to fly with EcoVoyage!"
+        mail.send(msg)
+        return render_template('index.html')
+
+    return render_template('Booknow.html')
+
 
 @app.route('/test')
 def test():

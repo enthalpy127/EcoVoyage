@@ -4,26 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../frontend/styles/Denmark.css">
+    <link rel="stylesheet" href="/static/Denmark.css">
 
 </head>
 <body>
-    <header>
-        <div class="nav-bar">
-            <div class="logo">
-                <h1>EcoVoyage</h1>
-            </div>
-            <div class="nav-links">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#aboutus">About Us</a></li>
-                    <li><a href="#destination">Destination</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="#login">Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    {% block navbar %}
+    {% include 'includes/_navbar.html' %}
+    {% endblock %}
 
     <main>
         <section class="bdy-sec-1">
@@ -35,7 +22,7 @@
 
 
     <div class="wrapper-1">
-        <img src="resources/images/zootopia-webshow-short_original.jpg" class="gallery__img" alt="Image 1">
+        <img src="/static/zootopia-webshow-short_original.jpg" class="gallery__img" alt="Image 1">
         <div class="text-box">
             <h2>Givskud Zoo Zootopia</h2>
             <p>Enjoy a day in the animal kingdom – GIVSKUD ZOO is only a 25-minute drive from Billund. 
@@ -49,7 +36,7 @@
     </div>
     
     <div class="wrapper-2">
-        <img src="resources/images/the-ancient-viking-stronghold.jpg" class="gallery__img" alt="Image 2">
+        <img src="/static/the-ancient-viking-stronghold.jpg" class="gallery__img" alt="Image 2">
         <div class="text-box1">
             <h2>The Ancient Viking Stronghold of Aros</h2>
             <p>Take in the history and charming neighborhoods of Aarhus, the crown jewel of Jutland, on this 
@@ -59,7 +46,7 @@
     </div>
 
     <div class="wrapper-3">
-        <img src="resources/images/odense.jpg" class="gallery__img" alt="Image 3">
+        <img src="/static/odense.jpg" class="gallery__img" alt="Image 3">
         <div class="text-box">
             <h2>Tour with Odense River Cruise</h2>
             <p>Enjoy a beautiful trip in our tour boat on Odense Å. We sail from Odense City to the 
@@ -72,7 +59,7 @@
 
 
     <div class="wrapper-4">
-        <img src="resources/images/mural.jpg" class="gallery__img" alt="Image 4">
+        <img src="/static/mural.jpg" class="gallery__img" alt="Image 4">
         <div class="text-box1">
             <h2>Street Art and Rooftops of Aarhus</h2>
             <p>Immerse yourself in the vibrant street art scene in Aaarhus on this walking tour. 
@@ -84,7 +71,7 @@
     </div>
 
     <div class="wrapper-5">
-        <img src="resources/images/kitesurfing.jpg" class="gallery__img" alt="Image 5">
+        <img src="/static/kitesurfing.jpg" class="gallery__img" alt="Image 5">
         <div class="text-box">
             <h2>SUP - Stand Up Paddle - Kitesurfing - Wingfoil & Kitefoil courses</h2>
             <p>Embrace the challenge of mastering your choice of water sport with a lesson in Varde,
@@ -95,7 +82,7 @@
     </div>
 
     <div class="wrapper-6">
-        <img src="resources/images/instaworthy_pic.jpg" class="gallery__img" alt="Image 6">
+        <img src="/static/instaworthy_pic.jpg" class="gallery__img" alt="Image 6">
         <div class="text-box1">
             <h2>Explore the Instaworthy Spots of Aarhus with a Local</h2>
             <p>This experience is provided by an independent Local. If you want to spice up your 
@@ -108,73 +95,8 @@
         </div>
     </div>
 
-    <footer>
-            <div class="footer-left">
-                <div class="footer-section fs-1">
-                    <div class="footer-logo">
-                        <img src="resources/images/Blue and White Elegant Travel Logo.png" alt="Travel Logo">
-                    </div>
-                    <div class="footer-location">
-                        <ul>
-                            <li>300 Washington St., Ste. 713, Newton, MA 02458</li>
-                            <li>1-800-776-0188 | Mon.–Fri., 9:00 a.m.–5:00 p.m. EST.</li>
-                            <li>info@earthwatch.org</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-right">
-                <div class="footer-section fs-2">
-                    <ul>
-                        <li>ABOUT</li>
-                        <hr>
-                        <li><a href="#">Mission & Values</a></li>
-                        <li><a href="#">Our History</a></li>
-                        <li><a href="#">Leadership</a></li>
-                        <li><a href="#">Annual Report</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Careers</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section fs-3">
-                    <ul>
-                        <li>EXPLORE</li>
-                        <hr>
-                        <li><a href="#">Expeditions</a></li>
-                        <li><a href="#">Research</a></li>
-                        <li><a href="#">Education</a></li>
-                        <li><a href="#">Partnerships</a></li>
-                        <li><a href="#">Stories</a></li>
-                        <li><a href="#">Support Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section fs-4">
-                    <ul>
-                        <li>CONNECT</li>
-                        <hr>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">YouTube</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">Newsletter</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section fs-5">
-                    <ul>
-                        <li>POLICIES</li>
-                        <hr>
-                        <li><a href="#">Safety Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Insurance Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <h5>© 2023 EcoVoyage Company. All rights reserved.</h5>
-            </div>
-        </footer>
+    {% block footer %}
+    {% include 'includes/_footer.html' %}
+    {% endblock %}
     </body>
 </html>
