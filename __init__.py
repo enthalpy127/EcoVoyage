@@ -1,5 +1,8 @@
-import Customer
-import User
+
+import sys
+sys.path.append('../Login')
+from Login import User
+from Login import Customer
 import shelve
 from datetime import timedelta
 from flask import Flask, render_template, request, redirect, url_for, session
@@ -7,6 +10,7 @@ from flask_session import Session
 from flask_mail import Mail, Message
 
 from Forms import CreateUserForm, CreateCustomerForm, CustomerLoginForm
+import traceback
 
 app = Flask(__name__)
 app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=10)
@@ -229,7 +233,7 @@ def denmark():
                 error = "Username or password incorrect!"
         db.close()
         #login(session)end
-    return render_template('Denmark.html')
+    return render_template('/Destinations/Denmark.html')
 
 @app.route('/singapore', methods=['GET','POST'])
 def singapore():
@@ -281,7 +285,7 @@ def singapore():
                 error = "Username or password incorrect!"
         db.close()
         #login(session)end
-    return render_template('Singapore.html')
+    return render_template('/Destinations/Singapore.html')
 
 @app.route('/switzerland', methods=['GET','POST'])
 def switzerland():
@@ -333,7 +337,7 @@ def switzerland():
                 error = "Username or password incorrect!"
         db.close()
         #login(session)end
-    return render_template('Switzerland.html')
+    return render_template('/Destinations/Switzerland.html')
 
 @app.route('/thailand', methods=['GET','POST'])
 def thailand():
@@ -385,7 +389,7 @@ def thailand():
                 error = "Username or password incorrect!"
         db.close()
         #login(session)end
-    return render_template('Thailand.html')
+    return render_template('/Destinations/Thailand.html')
 
 @app.route('/createUser', methods=['GET', 'POST'])
 def create_user():
@@ -449,8 +453,12 @@ def create_user():
         except:
             print("Error in retrieving Users from user.db.")
 
-        user = User.User(create_user_form.first_name.data, create_user_form.last_name.data,
-                         create_user_form.gender.data, create_user_form.membership.data, create_user_form.remarks.data)
+        user = User.User(create_user_form.first_name.data,
+                         create_user_form.last_name.data,
+                         create_user_form.gender.data,
+                         create_user_form.membership.data,
+                         create_user_form.remarks.data,
+                         create_user_form.password.data)
         users_dict[user.get_user_id()] = user
         db['Users'] = users_dict
 
@@ -613,6 +621,7 @@ def booknow():
         return render_template('index.html')
 
     return render_template('Booknow.html')
+
 
 @app.route('/test')
 def test():

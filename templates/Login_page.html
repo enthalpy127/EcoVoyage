@@ -1,100 +1,138 @@
-<div>
-  <link rel="stylesheet" href="{{ url_for('static', filename='loginpage.css') }}"  />
-  <div class="home-container">
-    <div class="home-desktop1">
-      <img
-        src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/2fdb4c00-4d38-4636-8072-a5aaa25c8c30/a1de29d2-a634-4176-a027-29540976ae5e?org_if_sml=1984426&amp;force_format=original"
-        alt="Rectangle123"
-        class="home-rectangle1"
-      />
-      <div class="home-frame1">
-        <div class="input-box">
-          <img src="{{ url_for('static', filename='persoon.jpg') }}" alt="Vector214" class="home-vector" />
-          <span class="home-text"><input type="text"></span>
-          <div class="home-container1">
-            <img src="/line1216-gv0h.svg" alt="Line1216" class="home-line1" />
-          </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Glassmorphism login Form Tutorial in html css</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #1e704b;
+}
+form{
+    height: 520px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 500;
+}
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #e5e5e5;
+}
+button{
+    margin-top: 20px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.social{
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+.social div{
+  background: red;
+  width: 250px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255,255,255,0.27);
+  color: #eaf0fb;
+  text-align: center;
+}
+.social div:hover{
+  background-color: rgba(255,255,255,0.47);
+}
+.social .fb{
+  margin-left: 25px;
+}
+.social i{
+  margin-right: 4px;
+}
+#signup-notice,
+#staff-login-notice {
+    text-align: center;
+    margin-top: 15px;
+}
+
+#staff-login-notice {
+    font-size: 12px;
+}
+    </style>
+</head>
+<body>
+    <form>
+        <h3>Login Here</h3>
+
+        <label for="username">Username</label>
+        <input type="text" placeholder="Email or Phone" id="username">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password">
+
+        <button onclick="login()">Log In</button>
+        <p id="signup-notice">Don't have an account? <a href="/createCustomer">Sign Up</a></p>
+        <div class="social">
+          <div class="go"><i class="fab fa-google"></i> Login with Google</div>
         </div>
-      </div>
-      <div class="home-container2">
-        <div class="home-frame11">
-          <div class="home-frame2">
-            <div class="home-frameiconkey">
-              <img
-                src="{{ url_for('static', filename='password-icon-1024x1024-6fxz3yku.png') }}"
-                alt="Vector324"
-                class="home-vector1"
-              />
-            </div>
-            <div class="home-container3">
-              <span class="home-text02"><span>Password</span></span>
-              <img
-                src="/line1321-tlf7.svg"
-                alt="Line1321"
-                class="home-line11"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="home-frame3">
-        <svg viewBox="0 0 1024 1024" class="home-icon">
-          <path
-            d="M768 768v-512h-512v512h512zM768 170q34 0 60 26t26 60v512q0 34-26 60t-60 26h-512q-34 0-60-26t-26-60v-512q0-34 26-60t60-26h512z"
-          ></path>
-        </svg>
-        <span class="home-text04"><span>Remember me</span></span>
-      </div>
-      <div class="home-frame4">
-        <span class="home-text06"><span><a href="/test">Login</a></span></span>
-      </div>
-      <span class="home-text08"><span>Forgot password ?</span></span>
-      <span class="home-text10"><a style="text-decoration:none" href="/createCustomer">Register now</a></span>
-      <div class="home-frame12">
-        <img src="/line2443-6v05.svg" alt="Line2443" class="home-line2" />
-        <span class="home-text12"><span>or</span></span>
-        <img src="/line3444-2rng.svg" alt="Line3444" class="home-line3" />
-      </div>
-      <div class="home-group1">
-        <img
-          src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/2fdb4c00-4d38-4636-8072-a5aaa25c8c30/d3c70917-e53d-4f26-91b5-5e59040afd2f?org_if_sml=1410&amp;force_format=original"
-          alt="Rectangle4453"
-          class="home-rectangle4"
-        />
-      </div>
-      <div class="home-group2">
-        <img
-          src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/2fdb4c00-4d38-4636-8072-a5aaa25c8c30/26867857-8c21-4ea8-b9a3-a0201b93b8a2?org_if_sml=1403&amp;force_format=original"
-          alt="Rectangle4458"
-          class="home-rectangle41"
-        />
-      </div>
-      <div class="home-group3">
-        <img
-          src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/2fdb4c00-4d38-4636-8072-a5aaa25c8c30/37237a2d-846e-4dc5-9ea1-5b2d628d2bb3?org_if_sml=1391&amp;force_format=original"
-          alt="Rectangle4462"
-          class="home-rectangle42"
-        />
-      </div>
-      <span class="home-text14"><span>LOGIN WITH FACEBOOK</span></span>
-      <span class="home-text16"><span>LOGIN WITH TWITTER</span></span>
-      <span class="home-text18"><span>LOGIN WITH GOOGLE</span></span>
-      <img
-        src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/2fdb4c00-4d38-4636-8072-a5aaa25c8c30/20266426-54a3-4ece-b3be-31f5d904d682?org_if_sml=1457&amp;force_format=original"
-        alt="Facebook466"
-        class="home-facebook"
-      />
-      <img
-        src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/2fdb4c00-4d38-4636-8072-a5aaa25c8c30/dd82ee0e-7a71-4bda-9480-cce7788a9b44?org_if_sml=1719&amp;force_format=original"
-        alt="Twitter467"
-        class="home-twitter"
-      />
-      <img
-        src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/2fdb4c00-4d38-4636-8072-a5aaa25c8c30/19da0c22-06a0-43f3-87d3-9089e14e80ff?org_if_sml=1831&amp;force_format=original"
-        alt="Google468"
-        class="home-google"
-      />
-      <div class="home-frame5"><span class="home-text20"><a style="text-decoration:none" href="/">x</a></span></div>
-    </div>
-  </div>
-</div>
+        <p id="staff-login-notice">Click here for <a href="/Staff_Login_page">Staff Login</a></p>
+    </form>
+    <script>
+      function login() {
+          windows.location.herf = "{{ url_for('login') }}";
+      }
+    </script>
+</body>
+</html>
