@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Update Customer{% endblock %}
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<h1 class="display-4">Update Customer</h1>
+<form method="POST" action="">
+    <div class="form-group">
+        {{ render_field(form.first_name, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.last_name, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.password, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.gender, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.email, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.date_joined, class="form-control datepicker") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.address, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.membership, class="form-check", style="list-style-type:none") }}
+    </div>
+    <div id="prof">
+        <div class="form-group">
+            {{ render_field(form.remarks, class="form-control") }}
+        </div>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+{% endblock %}

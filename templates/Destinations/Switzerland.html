@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switzerland Trip</title>
+    <link rel="stylesheet" href="/static/Switzerland.css">
+</head>
+<body>
+    {% block navbar %}
+    {% include 'includes/_navbar.html' %}
+    {% endblock %}
+    <div class="content1">
+        <br><br><br><br><br><br> <br><br><br>
+        <h1 id="Switz-header">Join us in our journey to explore Switzerland!<br><a href=#tripdetails><button id="btn1">Learn More</button></h1></a>
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div id="tripdetails">
+            <h2 id="timeline">Time Plan for the trip:</h2>
+            <h3>Day 1</h3> 
+            <h4>Swiss National Park</h4>
+            <p class="swissparkdetails">There's no way that this can be considered a successful trip without</p><p class="swissparkdetails">paying a visit to the Swiss National Park in Zernez. That's why we</p><p class="swissparkdetails">are starting off the trip with Switzerland's only national park, which</p><p class="swissparkdetails">is also recognised as cenntral Europe's oldest national park. The Swiss</p><p class="swissparkdetails">National Park holds beauty like no other, and we're sure that the</p><p class="swissparkdetails">stunning views will definitely be worth the while!</p>
+            </p>
+            <img id="swisspark" src="/static/SwissPark.webp">
+            <h4>Ofenpass Area Nature Trail</h4>
+            <p class="naturetrail">Following on we have the Nature Trail between Zernaz
+                <br>and the Munstertal Valley which provides intriguing 
+                <br>information about our environment.</p>
+            <img id="naturetrail" src="/static/naturetrail.webp">
+            <h3>Day 2</h3>
+            <h4>Luke Lucerne Lake</h4>
+            <p class="lake">Situated in central Switzerland is the fourth largest lake in
+            <br>Switzerland, known for its unique shape, with countless
+            <br>different bays and side arms.
+            <br>Spend a whale of a time kayaking with your loved ones!</p>
+            <img id="lake" src="/static/lake.jpg">
+            <h4>Mount Rigi</h4>
+            <p class="mount">Mount Rigi is a popular tourist attraction for its surrounding 
+                <br>alps and lakes.
+                <br>Also known as the "Queen of Mountains", Mount Rigi has<br>a highest height of a staggering 1798m.
+            </p>
+            <img id="mount" src="/static/mount.jpg">
+            <h3 class="day3" id="day3">Day 3</h3>
+            <h4 class="day3"id="day3content">Day 3 is usually the free time that we give for all of you to roam around on your own!<br>But fret not if you dont have any plans in mind, as we have it all covered if you plan to stick to our plans!</h4>
+            <br><br>
+            <h4>Mount Pilatus Summit</h4>
+            <p class="pilatus">See the best of Mount Pilatus with lots of breath-taking views!</p>
+            <img id="p1" src="/static/pilatus1.jpg"><img id="p2" src="/static/pilatus2.jpg">
+            <h3 id="warning">Warning! If you are roaming around by yourself be sure to meet back at our
+                <br>arranged timings to prevent waiting time.
+                <br>Thank you for your cooperation.
+            </h3>
+            <a href="#booknow"><button id="booknow">Book Now</button></a>
+            <br><br><br><br><br><br><br><br>
+        </div>
+       
+       
+    </div>
+
+
+
+
+
+    {% block footer %}
+    {% include 'includes/_footer.html' %}
+    {% endblock %}
+</body>
+</html>

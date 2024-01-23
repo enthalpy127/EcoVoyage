@@ -3,25 +3,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Switzerland Trip</title>
-    <link rel="stylesheet" href="styles/Switzerland.css">
+    <link rel="stylesheet" href="/static/Switzerland.css">
 </head>
 <body>
-    <header>
-        <div class="nav-bar">
-            <div class="logo">
-                <h1>EcoVoyage</h1>
-            </div>
-            <div class="nav-links">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#aboutus">About Us</a></li>
-                    <li><a href="#destination">Destination</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="#login">Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    {% block navbar %}
+    {% include 'includes/_navbar.html' %}
+    {% endblock %}
+
     <div class="content1">
         <br><br><br><br><br><br> <br><br><br>
         <h1 id="Switz-header">Join us in our journey to explore Switzerland!<br><a href=#tripdetails><button id="btn1">Learn More</button></h1></a>
@@ -33,31 +21,31 @@
             <h4>Swiss National Park</h4>
             <p class="swissparkdetails">There's no way that this can be considered a successful trip without</p><p class="swissparkdetails">paying a visit to the Swiss National Park in Zernez. That's why we</p><p class="swissparkdetails">are starting off the trip with Switzerland's only national park, which</p><p class="swissparkdetails">is also recognised as cenntral Europe's oldest national park. The Swiss</p><p class="swissparkdetails">National Park holds beauty like no other, and we're sure that the</p><p class="swissparkdetails">stunning views will definitely be worth the while!</p>
             </p>
-            <img id="swisspark" src="resources/images/SwissPark.webp">
+            <img id="swisspark" src="/static/SwissPark.webp">
             <h4>Ofenpass Area Nature Trail</h4>
             <p class="naturetrail">Following on we have the Nature Trail between Zernaz
                 <br>and the Munstertal Valley which provides intriguing 
                 <br>information about our environment.</p>
-            <img id="naturetrail" src="resources/images/naturetrail.webp">
+            <img id="naturetrail" src="/static/naturetrail.webp">
             <h3>Day 2</h3>
             <h4>Luke Lucerne Lake</h4>
             <p class="lake">Situated in central Switzerland is the fourth largest lake in
             <br>Switzerland, known for its unique shape, with countless
             <br>different bays and side arms.
             <br>Spend a whale of a time kayaking with your loved ones!</p>
-            <img id="lake" src="resources/images/lake.jpg">
+            <img id="lake" src="/static/lake.jpg">
             <h4>Mount Rigi</h4>
             <p class="mount">Mount Rigi is a popular tourist attraction for its surrounding 
                 <br>alps and lakes.
                 <br>Also known as the "Queen of Mountains", Mount Rigi has<br>a highest height of a staggering 1798m.
             </p>
-            <img id="mount" src="resources/images/mount.jpg">
+            <img id="mount" src="/static/mount.jpg">
             <h3 class="day3" id="day3">Day 3</h3>
             <h4 class="day3"id="day3content">Day 3 is usually the free time that we give for all of you to roam around on your own!<br>But fret not if you dont have any plans in mind, as we have it all covered if you plan to stick to our plans!</h4>
             <br><br>
             <h4>Mount Pilatus Summit</h4>
             <p class="pilatus">See the best of Mount Pilatus with lots of breath-taking views!</p>
-            <img id="p1" src="resources/images/pilatus1.jpg"><img id="p2" src="resources/images/pilatus2.jpg">
+            <img id="p1" src="/static/pilatus1.jpg"><img id="p2" src="/static/pilatus2.jpg">
             <h3 id="warning">Warning! If you are roaming around by yourself be sure to meet back at our
                 <br>arranged timings to prevent waiting time.
                 <br>Thank you for your cooperation.
@@ -73,73 +61,8 @@
 
 
 
-    <footer>
-        <div class="footer-left">
-            <div class="footer-section fs-1">
-                <div class="footer-logo">
-                    <img src="resources/images/Blue and White Elegant Travel Logo.png" alt="Travel Logo">
-                </div>
-                <div class="footer-location">
-                    <ul>
-                        <li>300 Washington St., Ste. 713, Newton, MA 02458</li>
-                        <li>1-800-776-0188 | Mon.–Fri., 9:00 a.m.–5:00 p.m. EST.</li>
-                        <li>info@earthwatch.org</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-right">
-            <div class="footer-section fs-2">
-                <ul>
-                    <li>ABOUT</li>
-                    <hr>
-                    <li><a href="#">Mission & Values</a></li>
-                    <li><a href="#">Our History</a></li>
-                    <li><a href="#">Leadership</a></li>
-                    <li><a href="#">Annual Report</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
-            <div class="footer-section fs-3">
-                <ul>
-                    <li>EXPLORE</li>
-                    <hr>
-                    <li><a href="#">Expeditions</a></li>
-                    <li><a href="#">Research</a></li>
-                    <li><a href="#">Education</a></li>
-                    <li><a href="#">Partnerships</a></li>
-                    <li><a href="#">Stories</a></li>
-                    <li><a href="#">Support Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section fs-4">
-                <ul>
-                    <li>CONNECT</li>
-                    <hr>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">YouTube</a></li>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                </ul>
-            </div>
-            <div class="footer-section fs-5">
-                <ul>
-                    <li>POLICIES</li>
-                    <hr>
-                    <li><a href="#">Safety Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Insurance Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <h5>© 2023 EcoVoyage Company. All rights reserved.</h5>
-        </div>
-    </footer>
+    {% block footer %}
+    {% include 'includes/_footer.html' %}
+    {% endblock %}
 </body>
 </html>
