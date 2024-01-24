@@ -14,6 +14,7 @@ class CreateUserForm(Form):
 class CustomerLoginForm(Form):
     username = StringField('Username', [validators.Length(min=1, max=30), validators.DataRequired()])
     password = StringField('Password', [validators.Length(min=10, max=10), validators.DataRequired()])
+    changelogin = StringField('changelogin')
     logout = StringField('logout')
 
 class CreateCustomerForm(Form):

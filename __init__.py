@@ -3,13 +3,14 @@ import sys
 sys.path.append('../Login')
 from Login import User
 from Login import Customer
+from Login import Forms
 import shelve
 from datetime import timedelta
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_session import Session
 from flask_mail import Mail, Message
 
-from Forms import CreateUserForm, CreateCustomerForm, CustomerLoginForm
+#from Forms import CreateUserForm, CreateCustomerForm, CustomerLoginForm
 import traceback
 
 app = Flask(__name__)
@@ -31,7 +32,7 @@ app.static_folder = 'static'
 def home():
     #login(session)
     error= None
-    customer_login_form =  CustomerLoginForm(request.form)
+    customer_login_form =  Forms.CustomerLoginForm(request.form)
     print(customer_login_form.changelogin.data)
     print(customer_login_form.data)
     if customer_login_form.logout.data != None:
@@ -83,7 +84,7 @@ def home():
 @app.route('/countries', methods=['GET','POST'])
 def countriespage():
     error= None
-    customer_login_form =  CustomerLoginForm(request.form)
+    customer_login_form =  Forms.CustomerLoginForm(request.form)
     print(customer_login_form.changelogin.data)
     print(customer_login_form.data)
     if customer_login_form.logout.data != None:
@@ -135,7 +136,7 @@ def countriespage():
 def login_page():
     #login(session)
     error= None
-    customer_login_form =  CustomerLoginForm(request.form)
+    customer_login_form =  Forms.CustomerLoginForm(request.form)
     print(customer_login_form.changelogin.data)
     print(customer_login_form.data)
     if customer_login_form.logout.data != None:
@@ -187,7 +188,7 @@ def login_page():
 def denmark():
     #login(session)
     error= None
-    customer_login_form =  CustomerLoginForm(request.form)
+    customer_login_form =  Forms.CustomerLoginForm(request.form)
     print(customer_login_form.changelogin.data)
     print(customer_login_form.data)
     if customer_login_form.logout.data != None:
@@ -239,7 +240,7 @@ def denmark():
 def singapore():
     #login(session)
     error= None
-    customer_login_form =  CustomerLoginForm(request.form)
+    customer_login_form =  Forms.CustomerLoginForm(request.form)
     print(customer_login_form.changelogin.data)
     print(customer_login_form.data)
     if customer_login_form.logout.data != None:
@@ -291,7 +292,7 @@ def singapore():
 def switzerland():
     #login(session)
     error= None
-    customer_login_form =  CustomerLoginForm(request.form)
+    customer_login_form =  Forms.CustomerLoginForm(request.form)
     print(customer_login_form.changelogin.data)
     print(customer_login_form.data)
     if customer_login_form.logout.data != None:
@@ -343,7 +344,7 @@ def switzerland():
 def thailand():
     #login(session)
     error= None
-    customer_login_form =  CustomerLoginForm(request.form)
+    customer_login_form =  Forms.CustomerLoginForm(request.form)
     print(customer_login_form.changelogin.data)
     print(customer_login_form.data)
     if customer_login_form.logout.data != None:
@@ -396,7 +397,7 @@ def create_user():
 
     #login(session)
     error= None
-    customer_login_form =  CustomerLoginForm(request.form)
+    customer_login_form =  Forms.CustomerLoginForm(request.form)
     print(customer_login_form.changelogin.data)
     print(customer_login_form.data)
     if customer_login_form.logout.data != None:
@@ -479,7 +480,7 @@ def create_customer():
 
     #login(session)
     error= None
-    customer_login_form =  CustomerLoginForm(request.form)
+    customer_login_form =  Forms.CustomerLoginForm(request.form)
     print(customer_login_form.changelogin.data)
     print(customer_login_form.data)
     if customer_login_form.logout.data != None:
@@ -565,7 +566,7 @@ def booknow():
 
     #login(session)
     error= None
-    customer_login_form =  CustomerLoginForm(request.form)
+    customer_login_form =  Forms.CustomerLoginForm(request.form)
     print(customer_login_form.changelogin.data)
     print(customer_login_form.data)
     if customer_login_form.logout.data != None:
