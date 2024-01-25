@@ -10,6 +10,8 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_session import Session
 from flask_mail import Mail, Message
 
+
+
 #from Forms import CreateUserForm, CreateCustomerForm, CustomerLoginForm
 import traceback
 
@@ -527,7 +529,7 @@ def create_customer():
         db.close()
         #login(session)end
 
-    create_customer_form = CreateCustomerForm(request.form)
+    create_customer_form = Forms.CreateCustomerForm(request.form)
     if request.method == 'POST' and create_customer_form.validate():
         print("EEE")
         customers_dict = {}
@@ -538,7 +540,8 @@ def create_customer():
         except:
             print("Error in retrieving Customers from customer.db.")
 
-        customer = Customer.Customer(create_customer_form.first_name.data,
+        customer = Customer.Customer(create_customer_form.username.data,
+            create_customer_form.first_name.data,
                                      create_customer_form.last_name.data,
                                      create_customer_form.gender.data,
                                      create_customer_form.membership.data,
@@ -546,7 +549,6 @@ def create_customer():
                                      create_customer_form.email.data,
                                      create_customer_form.birthday.data,
                                      create_customer_form.address.data,
-                                     create_customer_form.username.data,
                                      create_customer_form.password.data)
         customers_dict[customer.get_customer_id()] = customer
         db['Customers'] = customers_dict
@@ -557,7 +559,7 @@ def create_customer():
               customer.get_customer_id())
 
         db.close()
-        return redirect()
+        return redirect('/')
     return render_template('createCustomer.html', form=create_customer_form)
 
 
