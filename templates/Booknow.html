@@ -44,14 +44,40 @@
     <br><br>
     <h2>Destination:</h2>
     <div class="options">
-    <input type="radio" id="denmark" name="destination" value="denmark">
-    <label for="denmark">Denmark</label><br>
-    <input type="radio" id="singapore" name="destination" value="singapore">
-    <label for="singapore">Singapore</label><br>
-    <input type="radio" id="switzerland" name="destination" value="switzerland">
-    <label for="switzerland">Switzerland</label><br>
-    <input type="radio" id="thailand" name="destination" value="thailand">
-    <label for="thailand">Thailand</label></div><br><br>
+        <label for="destination">Choose your destination:</label>
+        <select id="destination" name="destination">
+            <option disabled>Singapore</option>
+            <option value="Garden by the bay">Garden by the bay</option>
+            <option value="Botanic Gardens">Botanic Gardens</option>
+            <option value="Singapore Zoo">Singapore Zoo</option>
+            <option value="Universal Studios">Universal Studios</option>
+            <option value="S.E.A Aquarium">S.E.A Aquarium</option>
+            <hr class="dropdown-divider">
+            <option disabled>Switzerland</option>
+            <option value="Luke Lucerne Lake">Luke Lucerne Lake</option>
+            <option value="Mount Rigi">Mount Rigi</option>
+            <option value="Mount Pilatus Summit">Mount Pilatus Summit</option>
+            <option value="Swiss National Park & Ofenpass Area Nature Trail">Swiss National Park & Ofenpass Area Nature Trail</option>
+            <hr class="dropdown-divider">
+            <option disabled>Thailand</option>
+            <option value="Similan Islands">Similan Islands</option>
+            <option value="Charuchak Park">Charuchak Park</option>
+            <option value="Erawan Waterfall">Erawan Waterfall</option>
+            <option value="Bamboo Bicycle Tour in twilight">Bamboo Bicycle Tour in twilight</option>
+            <option value="Temple of the Golden Buddha">Temple of the Golden Buddha</option>
+            <option value="Bangkok Butterfly Garden and Insectarium">Bangkok Butterfly Garden and Insectarium</option>
+            <hr class="dropdown-divider">
+            <option disabled>Denmark</option>
+            <option value="Givskud Zoo Zootopia">Givskud Zoo Zootopia</option>
+            <option value="Tour with Odense River Cruise">Tour with Odense River Cruise</option>
+            <option value="Street Art and Rooftops of Aarhus">Street Art and Rooftops of Aarhus</option>
+            <option value="The Ancient Viking Stronghold of Aros">The Ancient Viking Stronghold of Aros</option>
+            <option value="Explore the Instaworthy Spots of Aarhus with a Local">Explore the Instaworthy Spots of Aarhus with a Local</option>
+            <option value="Explore the Instaworthy Spots of Aarhus with a Local">Explore the Instaworthy Spots of Aarhus with a Local</option>
+            <option value="SUP - Stand Up Paddle - Kitesurfing - Wingfoil & Kitefoil courses">SUP - Stand Up Paddle - Kitesurfing - Wingfoil & Kitefoil courses</option>
+        </select>
+    </div>
+    <br><br>
     <label>Departure Date:</label>
     <input type="date" for="departure" name="departure" id="departure" required><br><br>
     <Label>Number of adults:</Label>
@@ -134,5 +160,6 @@
             }
         }
     </script>
+
 
 </html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='staffpage.css') }}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<style>
+ .refunded {
+      text-decoration: line-through;
+      color: #ccc;
+      opacity: 0.5;
+  }
+</style>
+<script>
+  function showPreviousOrders() {
+    var start = parseInt(document.getElementById('start').value);
+    var end = parseInt(document.getElementById('end').value);
+    var newStart = end;
+    var newEnd = end + 10;
+    window.location.href = '/staff_booking_page?start=' + newStart + '&end=' + newEnd;
+  }
+  function showMoreOrders() {
+    var start = parseInt(document.getElementById('start').value);
+    var end = parseInt(document.getElementById('end').value);
+    var newStart = start - 10;
+    var newEnd = end - 10;
+    window.location.href = '/staff_booking_page?start=' + newStart + '&end=' + newEnd;
+  }
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous">
+    function openalert(){
+    }
+</script>
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="logo" href="#home">EcoVoyage</a>
+        <div class="topnav-right">
+            <a href="#"><span class="glyphicon glyphicon-comment"></span> Chat</a>
+            <a href="#"><span class="glyphicon glyphicon-envelope"></span> Email</a>
+            <a href="#"><span class="glyphicon glyphicon-bell"></span> Notification</a>
+
+            <img src="{{ url_for('static', filename='Blue and White Elegant Travel Logo.png') }}" style="height:50px; border-radius: 50%; border: 1px solid #c7c7c7;">
+
+            <a href="#" style="padding-right: 20px;">Username<span class="glyphicon glyphicon-menu-down"></span></a>
+
+        </div>
+    </div>
+
+
+<div class="parent">
+    <div class="child-1">
+        <div class=" container-fluid d-flex align-items-start navbar navbar-expand -xxl">
+          <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link" id="v-pills-overview-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-overview" aria-selected="false">Overview</button>
+            <button class="nav-link active" id="v-pills-sales-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-sales" aria-selected="true">Sales</button>
+            <button class="nav-link" id="v-pills-booking-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-Booking" aria-selected="false">Booking</button>
+            <button class="nav-link" id="v-pills-account-Management-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-account-Management" aria-selected="false">Account Management</button>
+            <button class="nav-link" id="v-pills-rewards-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-rewards" aria-selected="false">Rewards</button>
+          </div>
+<!--          <div class="tab-content" id="v-pills-tabContent">-->
+<!--            <div class="tab-pane fade" id="v-pills-overview" role="tabpanel" aria-labelledby="v-pills-overview-tab">...</div>-->
+<!--            <div class="tab-pane fade show active" id="v-pills-sales" role="tabpanel" aria-labelledby="v-pills-sales-tab">...</div>-->
+<!--            <div class="tab-pane fade" id="v-pills-booking" role="tabpanel" aria-labelledby="v-pills-booking-tab">...</div>-->
+<!--            <div class="tab-pane fade" id="v-pills-account-Management" role="tabpanel" aria-labelledby="v-pills-account-Management-tab">...</div>-->
+<!--            <div class="tab-pane fade" id="v-pills-rewards" role="tabpanel" aria-labelledby="v-pills-rewards-tab">...</div>-->
+<!--          </div>-->
+        </div>
+    </div>
+
+
+    <div class="child2">
+        <div class="data_table table-responsive" id="data_table">
+          <table border="1" class="table table-light table-striped table-hover table-bordered table align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>Order ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Destination</th>
+                <th>Departure Date</th>
+                <th>Num of Adults</th>
+                <th>Num of Children</th>
+                <th>CardHolder</th>
+                <th>Card Expiry</th>
+                <th>Adult Price</th>
+                <th>Children Price(0-10)</th>
+                <th>Total Amount</th>
+                <th><button class="btn btn-outline-info mx-auto d-block"><a href="/showall" style="text-decoration:none; color:white;">Chart</a></button></th>
+                <th><button class="btn btn-success mx-auto d-block"><a href="/Export_to_csv" style="text-decoration:none; color:white;">Export</a></button></th>
+                <th>Refund</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in orders %}
+                <tr class="rbutton">
+                  {% if order['Refunded'] == 'T' %}
+                    <td style="text-decoration: line-through;" >{{ order['order_id'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['firstname'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['lastname'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['email'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['phone'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['destination'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['departure'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['adults'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['children'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['cardholder'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['cardexpiry'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['adult_price'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['children_price'] }}</td>
+                  <td style="text-decoration: line-through;" >{{ order['total_amount'] }}</td>
+                  <td style="text-decoration: line-through;" ><button class="btn btn-warning mx-auto d-block"><a href="/update_order/{{ order['order_id'] }}" style="text-decoration:none; color:black;" id="{{ order['order_id'] }}">Update</a></button></td>
+                  <td style="text-decoration: line-through;" ><button onclick="confirmDelete({{ order['order_id'] }})" class="btn btn-outline-danger mx-auto d-block"><a href="/delete_order/{{ order['order_id'] }}" style="text-decoration:none; color:red;" id="{{ order['order_id'] }}">Delete</a></button></td>
+
+                  <td><button class="btn btn-secondary mx-auto d-block" id="refund_button_{{ order['order_id'] }}"><a href="/refund/{{ order['order_id'] }}" style="text-decoration:none; color:white;" id="{{ order['order_id'] }}">Refund</a></button></td>
+                  {% else %}
+                    <td>{{ order['order_id'] }}</td>
+                  <td>{{ order['firstname'] }}</td>
+                  <td>{{ order['lastname'] }}</td>
+                  <td>{{ order['email'] }}</td>
+                  <td>{{ order['phone'] }}</td>
+                  <td>{{ order['destination'] }}</td>
+                  <td>{{ order['departure'] }}</td>
+                  <td>{{ order['adults'] }}</td>
+                  <td>{{ order['children'] }}</td>
+                  <td>{{ order['cardholder'] }}</td>
+                  <td>{{ order['cardexpiry'] }}</td>
+                  <td>{{ order['adult_price'] }}</td>
+                  <td>{{ order['children_price'] }}</td>
+                  <td>{{ order['total_amount'] }}</td>
+                  <td><button class="btn btn-warning mx-auto d-block"><a href="/update_order/{{ order['order_id'] }}" style="text-decoration:none; color:black;" id="{{ order['order_id'] }}">Update</a></button></td>
+                  <td><button class="btn btn-outline-danger mx-auto d-block"><a onclick="confirmDelete({{ order['order_id'] }})" style="text-decoration:none; color:red;" id="{{ order['order_id'] }}">Delete</a></button></td>
+
+                  <td><button class="btn btn-secondary mx-auto d-block" id="refund_button_{{ order['order_id'] }}"><a style="text-decoration:none; color:white;" id="{{ order['order_id'] }}">Refund</a></button></td>
+                    {% endif %}
+                </tr>
+              {% endfor %}
+
+              <tfoot>
+                <tr>
+                    <td>
+                      <button onclick="showPreviousOrders()" class="btn btn-outline-dark mx-auto d-block">Previous</button>
+                    </td>
+                    <td colspan="14"></td>
+                    <td colspan="2">
+                      <button onclick="showMoreOrders()" class="btn btn-outline-dark mx-auto d-block">Show More Orders</button>
+                    </td>
+                </tr>
+              </tfoot>
+            </tbody>
+          </table>
+        </div>
+        <input type="hidden" id="start" value="{{ start }}">
+        <input type="hidden" id="end" value="{{ end }}">
+    </div>
+</div>
+
+<script>
+
+    const data_row = document.getElementsByClassName("rbutton");
+    // console.log(data_row);
+
+    for(let i = 0; i < data_row.length; i++) {
+       let rbutton = data_row[i];
+       let button = rbutton.lastElementChild.firstChild;
+
+       console.log(rbutton);
+       console.log(button);
+
+       button.addEventListener("click", function () {
+
+        if (confirm('Are you sure you want to refund?') == False ) {
+            console.log('Browser: Refunded')
+            rbutton.classList.remove("btn-secondary");
+            rbutton.classList.add("text-decoration-line-through");
+
+            console.log(rbutton.firstElementChild.firstChild);
+
+            let id = +(rbutton.firstElementChild.innerText)
+
+            window.location.href = 'http://127.0.0.1:5000/refund/' + id
+        }
+      });
+    }
+
+
+</script>
+
+
+<script>
+
+
+    function confirmDelete(id) {
+      if (confirm("Are you sure you want to delete this order?")) {
+        window.location.href = "/delete_order/" + id;
+      }
+    }
+
+</script>
+
+</body>
+</html>

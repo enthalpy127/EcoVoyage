@@ -1,0 +1,5 @@
+order_id,firstname,lastname,email,phone,airport,destination,departure,Number of Adults,Number of Children,Card number,Cardholder,Card expiry,Card sec,Adult price,Children price,total_amount,Refunded
+1,fsdfd,sdfds,sdfsfd@dfgfdg,12345678,rsfvuygi,Mount Rigi,2024-02-20,9,10,123412341234,dscy,05/05,777,400,320,6800,F
+2,dffg,hong,xavdw@sasd,12345678,Singapore,The Ancient Viking Stronghold of Aros,2024-02-20,1,0,123412341234,dscy,05/05,777,180,120,180,F
+3,dffg,hong,xavdw@sasd,12345678,Singapore,S.E.A Aquarium,2024-02-20,3,0,123412341234,dscy,05/05,777,220,180,660,F
+4,dffg,hong,xavdw@sasd,12345678,Singapore,S.E.A Aquarium,2024-02-20,3,5,123412341234,dscy,05/05,777,220,180,1560,F

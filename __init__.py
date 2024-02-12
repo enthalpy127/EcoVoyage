@@ -9,6 +9,12 @@ from datetime import timedelta
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_session import Session
 from flask_mail import Mail, Message
+from Order import Orders
+from Order.order_forms import CreateOrderForm
+import csv
+import flask
+from Order.models import df
+from dash import Dash, html, dash_table, dcc
 
 
 
@@ -27,6 +33,18 @@ app.config['MAIL_PASSWORD'] = 'mrxs dofi hmgd murd'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 mail = Mail(app)
+
+
+
+dash_app1 = Dash(__name__, server=app, url_base_pathname='/plotly/')
+dash_app1.layout = html.Div([
+    dash_table.DataTable(data=df.to_dict('records'), page_size=10),
+    dcc.Graph(figure={}, id="controls-and-graph"),
+    dcc.RadioItems(options=['sum', 'avg'], value='sum', id='controls-and-radio-item-x'),
+    dcc.RadioItems(options=['Number of Adults', 'Number of Children', 'total_amount', 'Refunded'], value='Number of Adults', id='controls-and-radio-item-y'),
+
+])
+
 app.static_folder = 'static'
 
 
@@ -618,17 +636,180 @@ def booknow():
     if request.method == 'POST':
         data = request.form
         print(data.values)
+        print(list(data))
+        with shelve.open('order_data', 'c') as db:
+            orderid_list = []
+            dictte = {}
+            for i in db:
+                orderid_list.append(i)
+            orderid_list.sort()
+            orderid = int(orderid_list[-1]) + 1
+            dictte['order_id'] = orderid
+            for i in list(data):
+                dictte[i] = data[i]
+            total_amount = Orders.calculate_price(dictte['destination'], int(dictte['adults']), int(dictte['children']))
+
+            key_names = ["adult_price", "children_price", "total_amount"]
+            num = 0
+            for i in total_amount:
+                dictte[key_names[num]] = str(i)
+                num += 1
+            dictte["Refunded"] = "F"
+            print(dictte)
+            db[str(dictte['order_id'])] = dictte
+
+            for i in db:
+                for a in db[i].values():
+                    print(type(a))
+                print(f"{i}, {db[i]}")
+
+
         msg = Message('Hello', sender = 'xuanhongtay@gmail.com', recipients = [f'{data["email"]}'])
         msg.body = f"Dear Mr/Mrs {data['lastname']}, \n You have succesfully booked our trip to {data['destination']}. \nThe departure date will be on {data['departure']} at {data['airport']}. \n Thank you for choosing to fly with EcoVoyage!"
         mail.send(msg)
+
+
         return render_template('index.html')
 
     return render_template('Booknow.html')
 
 
+
+
 @app.route('/test')
 def test():
     return render_template('staffpage.html')
+
+
+@app.route('/staff_booking_page', methods=['GET'])
+def show_orders():
+    with shelve.open('order_data') as db:  # Replace 'order_db' with your database name
+        orders = list(db.values())
+        orders.reverse()
+    # Get the 'start' index from query parameters, defaulting to 0 if not present
+    start = int(request.args.get('start', 0))
+
+    # Prevent negative start index
+    start = max(start, 0)  # This line handles the negative start index
+
+    # Calculate the 'end' index for pagination (exclusive)
+    end = start + 10
+
+    # Slice the orders list to retrieve the appropriate subset
+    orders_to_display = orders[start:end]
+
+    # Render the template, passing the orders, start, and end values
+    return render_template('staff_bookings_page.html', orders=orders_to_display, start=start, end=end)
+
+
+@app.route('/update_order/<int:id>', methods=['GET', 'POST'])
+def update_order(id):
+    id = str(id)
+    update_order_form = CreateOrderForm(request.form)
+    if request.method == 'POST':
+        db = shelve.open('order_data', 'c')
+        order = db[id]
+        print('Before update')
+        print(order)
+        order['firstname'] = update_order_form.first_name.data
+        order['lastname'] = update_order_form.last_name.data
+        order['email'] = update_order_form.email.data
+        order['phone'] = update_order_form.phone.data
+        order['destination'] = update_order_form.destination.data
+        order['adults'] = update_order_form.number_of_adult_ticket.data
+        order['children'] = update_order_form.number_of_child_ticket.data
+        # total_amount = int(order['destination price']) * int(order['number of ticket'])
+        # order['Total amount'] = str(total_amount)
+        key_names = ["adult_price", "children_price", "total_amount"]
+        num = 0
+        for i in Orders.calculate_price(order['destination'], int(order['adults']), int(order['children'])):
+            print(i)
+            order[key_names[num]] = i
+            num += 1
+
+        print('Updated')
+        print(order.values())
+        db[id] = order
+        db.close()
+
+        return redirect('/staff_booking_page')
+    else:
+        db = shelve.open('order_data', 'r')
+        order_dict = []
+        id = str(id)
+        print(db)
+        for value in db[id].values():
+            order_dict.append(str(value))
+
+        order = order_dict
+        print(order)
+        update_order_form.first_name.data = order[1]
+        update_order_form.last_name.data = order[2]
+        update_order_form.email.data = order[3]
+        update_order_form.phone.data = order[4]
+        update_order_form.destination.data = order[6]
+        update_order_form.number_of_adult_ticket.data = order[8]
+        update_order_form.number_of_child_ticket.data = order[9]
+        return render_template('update_order.html', form=update_order_form)
+
+
+
+@app.route('/refund/<int:id>')
+def refund(id):
+
+    print('Refunded')
+    id = str(id)
+    # if request.method == 'POST':
+    db = shelve.open('order_data', 'c')
+    order = db[id]
+    print('Before update')
+    print(order)
+
+    if order['Refunded'] == 'F':
+        order['Refunded'] = 'T'
+
+        print('Updated')
+        print(order.values())
+    db[id] = order
+    db.close()
+
+    return redirect('/staff_booking_page')
+
+
+@app.route('/delete_order/<int:id>')
+def delete(id):
+    try:
+        with shelve.open('order_data', 'c') as db:
+            id = str(id)
+            db.pop(id)
+            if db[id] in db:
+                for i in db:
+                    print(f'{type(i)}, {db[i]}')
+        return redirect('/staff_booking_page')
+    except:
+        return redirect('/staff_booking_page')
+
+
+
+@app.route('/Export_to_csv')
+def export():
+    with open('order_data_export.csv', 'w', newline='') as file:
+        with shelve.open('order_data', 'c') as db:
+            writer = csv.writer(file)
+            writer.writerow(["order_id", "firstname", "lastname", "email", "phone", "airport", "destination", "departure",
+                             "Number of Adults", "Number of Children", "Card number", "Cardholder", "Card expiry",
+                             "Card sec", "Adult price",
+                             "Children price", "total_amount", "Refunded"])
+            for i in db:
+                x = db[i].values()
+                # print(list(x))
+                writer.writerow(x)
+        return redirect('/staff_booking_page')
+
+
+@app.route('/showall')
+def show():
+    return flask.redirect('/plotly/')
 
 
 if __name__ == '__main__':
