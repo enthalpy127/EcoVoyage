@@ -10,7 +10,7 @@ from Login import Forms
 from Login import Feedback
 import shelve
 from datetime import timedelta, datetime
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_session import Session
 from flask_mail import Mail, Message
 from Order import Orders
@@ -19,6 +19,7 @@ import csv
 import flask
 from Order.models import df
 from dash import Dash, html, dash_table, dcc
+import stripe
 
 
 
@@ -32,8 +33,8 @@ Session(app)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 25
-app.config['MAIL_USERNAME'] = 'xuanhongtay@gmail.com'
-app.config['MAIL_PASSWORD'] = 'mrxs dofi hmgd murd'
+app.config['MAIL_USERNAME'] = 'myatkophone981@gmail.com'
+app.config['MAIL_PASSWORD'] = 'nith ifhf rfpk jkbr'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 mail = Mail(app)
@@ -625,7 +626,7 @@ def booknow():
         mail.send(msg)
 
 
-        return render_template('index.html')
+        return redirect('/show_payment_method')
 
     return render_template('Booknow.html')
 
@@ -878,6 +879,10 @@ def test_feedback_pg():
     return render_template('feedback_page.html', early_feedbacks=early_feedbacks)
 
 
+
+@app.route('/show_payment_method')
+def show_payment_method():
+    return redirect('http://localhost:4242/checkout.html')
 
 
 if __name__ == '__main__':

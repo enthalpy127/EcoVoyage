@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -163,7 +163,8 @@ button:hover {
         <label>Card Security Code:</label>
         <input type="text" name="cardsec" placeholder="000" for="cardsec" pattern="[0-9]{3}" required> 
     </div>
-    <br><br><input type="submit" value="Submit" class="btn btn-primary"/>
+    <br><br><button><a href="/show_payment_method"><input type="submit" value="Pay Now" class="btn btn-primary"/></a></button>
+    <br>
 </form>
 
 {% block footer %}

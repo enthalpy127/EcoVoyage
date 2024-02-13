@@ -53,7 +53,7 @@ body {
 /* body */
 
 main .bdy-sec-1 {
-    height: 600px;
+    height: 700px;
     background-image: url('travel-landscape.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -98,7 +98,6 @@ section {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 80px 0 0;
   }
   
   section h2 {
@@ -181,7 +180,6 @@ section {
   }
   
   .contact .row {
-    margin: 60px 0 90px;
     display: flex;
     max-width: 1200px;
     width: 100%;
@@ -242,13 +240,9 @@ section {
 /* footer section */
 
 footer {
-    display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 100px;
-    padding-bottom: 50px;
-    background-color: #040503;
+    background-color: #1e704b;
     color: #d0c7c4;
 }
 
