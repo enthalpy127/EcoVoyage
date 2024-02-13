@@ -6,73 +6,32 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <footer>
-        <div class="footer-left">
-            <div class="footer-section fs-1">
-                <div class="footer-logo">
-                    <img src="{{ url_for('static', filename='Blue and White Elegant Travel Logo.png') }}" alt="Travel Logo">
+<footer>
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>Please contact us for any enquiries or feedback.</p>
+        <div class="row">
+            <div class="col information">
+                <div class="contact-details">
+                    <p><i class="fas fa-map-marker-alt"></i> 10 Ang Mo Kio Ave 8</p>
+                    <p><i class="fas fa-envelope"></i> enquiries@mymail.nyp.edu.sg</p>
+                    <p><i class="fas fa-phone"></i> +65 6984 2435</p>
+                    <p><i class="fas fa-clock"></i> Monday - Friday: 9:00 AM - 9:00 PM</p>
+                    <p><i class="fas fa-clock"></i> Saturday: 10:00 AM - 3:00 PM</p>
+                    <p><i class="fas fa-clock"></i> Sunday: Closed</p>
+                    <p><i class="fas fa-globe"></i> www.travelbros.com</p>
                 </div>
-                <div class="footer-location">
-                    <ul>
-                        <li>300 Washington St., Ste. 713, Newton, MA 02458</li>
-                        <li>1-800-776-0188 | Mon.–Fri., 9:00 a.m.–5:00 p.m. EST.</li>
-                        <li>info@earthwatch.org</li>
-                    </ul>
-                </div>
+            </div>
+            <div class="col form">
+                <form id="myForm" action="response.html" method="get" onsubmit="submitForm()">
+                    <label for="name"><input type="text" id="name" placeholder="Name*" required></label>
+                    <label for="email"><input type="email" id="email" placeholder="Email*" required></label>
+                    <label for="message"><textarea placeholder="Message*" id="message" required></textarea></label>
+                    <button id="submit" type="submit">Send Message</button>
+                </form>
             </div>
         </div>
-        <div class="footer-right">
-            <div class="footer-section fs-2">
-                <ul>
-                    <li>ABOUT</li>
-                    <hr>
-                    <li><a href="#">Mission & Values</a></li>
-                    <li><a href="#">Our History</a></li>
-                    <li><a href="#">Leadership</a></li>
-                    <li><a href="#">Annual Report</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
-            <div class="footer-section fs-3">
-                <ul>
-                    <li>EXPLORE</li>
-                    <hr>
-                    <li><a href="#">Expeditions</a></li>
-                    <li><a href="#">Research</a></li>
-                    <li><a href="#">Education</a></li>
-                    <li><a href="#">Partnerships</a></li>
-                    <li><a href="#">Stories</a></li>
-                    <li><a href="#">Support Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section fs-4">
-                <ul>
-                    <li>CONNECT</li>
-                    <hr>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">YouTube</a></li>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                </ul>
-            </div>
-            <div class="footer-section fs-5">
-                <ul>
-                    <li>POLICIES</li>
-                    <hr>
-                    <li><a href="#">Safety Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Insurance Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <h5>© 2023 EcoVoyage Company. All rights reserved.</h5>
-        </div>
-    </footer>
+    </section>
+</footer>
 </body>
 </html>
