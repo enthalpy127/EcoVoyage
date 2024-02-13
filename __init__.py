@@ -1,11 +1,15 @@
 
 import sys
+
+from EcoVoyage.Login.Forms import CreateFeedbackForm
+
 sys.path.append('../Login')
 from Login import User
 from Login import Customer
 from Login import Forms
+from Login import Feedback
 import shelve
-from datetime import timedelta
+from datetime import timedelta, datetime
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_session import Session
 from flask_mail import Mail, Message
@@ -810,6 +814,109 @@ def export():
 @app.route('/showall')
 def show():
     return flask.redirect('/plotly/')
+
+
+@app.route('/feedback', methods=['GET', 'POST'])
+def feedback_pg():
+    create_feedback_form = CreateFeedbackForm(request.form)
+    print('This code works')
+    # If method is POST, it adds data
+    if request.method == 'POST':
+        feedbacks_list = []
+
+        db = shelve.open('feedback.db', 'c')
+
+        try:
+            feedbacks_list = db['Feedbacks']
+            print('Debugging')
+            for feedback in feedbacks_list:
+                print(feedback)
+            print(f'Feedback dict type => {type(feedbacks_list)}')
+        except:
+            print('Error in retrieving feedback data from feedback.db')
+
+        feedback = Feedback.Feedback(
+            create_feedback_form.name.data,
+            create_feedback_form.star_rating.data,
+            create_feedback_form.title.data,
+            create_feedback_form.message.data,
+            datetime.now().strftime('%Y-%m-%d')
+        )
+        print(feedback.name)
+        print(feedback.star_rating)
+        print(feedback.title)
+        print(feedback.message)
+        print(feedback.date_submitted)
+
+        feedbacks_list.append(feedback)
+        db['Feedbacks'] = feedbacks_list
+
+        if len(feedbacks_list) > 8:
+            early_feedbacks = feedbacks_list[:8]
+        else:
+            early_feedbacks = feedbacks_list[:]
+
+        #return render_template('feedback_page.html', early_feedbacks=early_feedbacks)
+        return redirect(url_for('feedback_pg', early_feedbacks=early_feedbacks))
+
+    # If method is GET, it reads data
+    db = shelve.open('feedback.db', 'c')
+
+    try:
+        feedbacks_list = db['Feedbacks']
+        early_feedbacks = []
+
+        if len(feedbacks_list) > 8:
+            early_feedbacks = feedbacks_list[:8]
+        else:
+            early_feedbacks = feedbacks_list[:]
+
+        return render_template('feedback_page.html', early_feedbacks=early_feedbacks)
+
+    except Exception as e:
+        print(f'ERROR: {e}')
+        print(traceback.print_exc())
+
+    return render_template('error_found.html')
+
+
+@app.route('/test_feedback', methods=['GET', 'POST'])
+def test_feedback_pg():
+    create_feedback_form = CreateFeedbackForm(request.form)
+
+    feedbacks_list = []
+
+    db = shelve.open('feedback.db', 'c')
+
+    # try:
+    #     feedbacks_list = db['Feedbacks']
+    #     print(f'Feedback dict type => {type(feedbacks_list)}')
+    # except:
+    #     print('Error in retrieving feedback data from feedback.db')
+
+    feedback = Feedback.Feedback(
+        'John Doe',
+        4,
+        'Testing',
+        'Wtf bro now it is working!',
+        datetime.now().strftime('%Y-%m-%d')
+    )
+
+    feedbacks_list.append(feedback)
+    db['Feedbacks'] = feedbacks_list
+
+    if len(feedbacks_list) > 8:
+        early_feedbacks = feedbacks_list[:8]
+    else:
+        early_feedbacks = feedbacks_list[:]
+
+    print('Test data is added successfully')
+    print(feedbacks_list)
+    print(early_feedbacks)
+
+    return render_template('feedback_page.html', early_feedbacks=early_feedbacks)
+
+
 
 
 if __name__ == '__main__':

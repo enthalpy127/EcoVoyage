@@ -1,0 +1,327 @@
+{% extends "base.html" %}
+{% block title %}Our Feedbacks{% endblock %}
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+    .contact-heading, .contact-description {
+        text-align: center;
+    }
+
+    .heading {
+        margin-top: 35px;
+    }
+
+    .contact {
+        margin-bottom: 100px;
+    }
+
+    .description {
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+
+    .contact .row {
+    margin: 60px 0 90px;
+    display: flex;
+    max-width: 1200px;
+    width: 60%;
+    margin-top: 50px;
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .contact .row .col {
+    padding: 0 10px;
+    width: calc(100% / 2 - 50px);
+  }
+
+  .contact .col p {
+    margin-bottom: 10px;
+  }
+
+  .contact .col p i {
+    color: #7a7a7a;
+    margin-right: 10px;
+  }
+
+  .contact form input {
+    height: 45px;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid #bfbfbf;
+  }
+
+  .contact form textarea {
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    height: 150px;
+    outline: none;
+    resize: vertical;
+    border: 1px solid #bfbfbf;
+  }
+
+  .contact form button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 17px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background: #333;
+    transition: 0.2s ease;
+  }
+
+  .contact form button:hover {
+    background: #525252;
+  }
+
+  .contact-details p {
+    text-align: left;
+  }
+
+    .reviews, .main-title, .feedback-form {
+        font-family: 'Roboto';
+    }
+
+    .main-title {
+        text-align: center;
+    }
+
+    .reviews {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 65px;
+    }
+
+    .reviews-title {
+        margin-top: 50px;
+    }
+
+    .reviews-title, .reviews-description {
+        text-align: center;
+    }
+
+    .display-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    .card {
+        border: 1px solid black;
+        padding: 25px;
+        width: 300px;
+        justify-self: center;
+    }
+
+    /* Container Feedback Form */
+
+
+
+    .container-feedback {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+    }
+
+    h2 {
+        color: #333;
+        text-align: center;
+    }
+
+    .container-feedback > p {
+        text-align: center;
+    }
+
+    form {
+        display: grid;
+        gap: 10px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    /* Rating css code */
+
+    .rate {
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+    }
+    .rate:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+    }
+    .rate:not(:checked) > label {
+        float:right;
+        width:1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:30px;
+        color:#ccc;
+    }
+    .rate:not(:checked) > label:before {
+        content: '★ ';
+    }
+    .rate > input:checked ~ label {
+        color: #ffc700;
+    }
+    .rate:not(:checked) > label:hover,
+    .rate:not(:checked) > label:hover ~ label {
+        color: #deb217;
+    }
+    .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label,
+    .rate > label:hover ~ input:checked ~ label {
+        color: #c59b08;
+    }
+
+</style>
+
+<section class="contact" id="contact">
+    <h2 class="contact-heading">Contact Us</h2>
+    <p class="contact-description">Please contact us for any enquiries or feedback.</p>
+    <div class="row">
+        <div class="col information">
+            <div class="contact-details">
+                <p><i class="fas fa-map-marker-alt"></i> 180 Ang Mo Kio Ave 8</p>
+                <p><i class="fas fa-envelope"></i> enquiries@mymail.nyp.edu.sg</p>
+                <p><i class="fas fa-phone"></i> +65 6984 2435</p>
+                <p><i class="fas fa-clock"></i> Monday - Friday: 9:00 AM - 9:00 PM</p>
+                <p><i class="fas fa-clock"></i> Saturday: 10:00 AM - 3:00 PM</p>
+                <p><i class="fas fa-clock"></i> Sunday: Closed</p>
+                <p><i class="fas fa-globe"></i> www.travelbros.com</p>
+            </div>
+        </div>
+        <div class="col form">
+            <form id="myForm" action="response.html" method="get" onsubmit="submitForm()">
+                <label for="name"><input type="text" id="name" placeholder="Name*" required></label>
+                <label for="email"><input type="email" id="email" placeholder="Email*" required></label>
+                <label for="message"><textarea placeholder="Message*" id="message" required></textarea></label>
+                <button id="submit" type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<section class="reviews" id="reviews">
+    <h2 class="reviews-title">Reviews</h2>
+    <p class="reviews-description">Here is what our new friends have to say.</p>
+    <div class="display-container">
+        <div class="card">
+            <h3 class="title">So convenient to use it</h3>
+            <div class="star-rating">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </div>
+            <p class="date">27 Dec</p>
+            <p class="name">By Andrew Jason</p>
+            <p class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo beatae, molestias
+                commodi quam unde tempora, est consectetur mollitia modi consequuntur cum voluptates suscipit veniam
+                quos officia tempore blanditiis velit inventore!</p>
+        </div>
+        <div class="card">
+            <h3 class="title">So convenient to use it</h3>
+            <div class="star-rating">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </div>
+            <p class="date">27 Dec</p>
+            <p class="name">By Andrew Jason</p>
+            <p class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo beatae, molestias
+                commodi quam unde tempora, est consectetur mollitia modi consequuntur cum voluptates suscipit veniam
+                quos officia tempore blanditiis velit inventore!</p>
+        </div>
+
+
+        {% for feedback in early_feedbacks %}
+        <div class="card">
+            <h3 class="title">{{ feedback.title }}</h3>
+            <div class="star-rating">
+                {% for _ in range(feedback.star_rating) %}
+                <span class="fa fa-star checked"></span>
+                {% endfor %}
+                {% for _ in range(5 - feedback.star_rating) %}
+                <span class="fa fa-star"></span>
+                {% endfor %}
+            </div>
+            <p class="date">{{ feedback.date_submitted }}</p>
+            <p class="name">By {{ feedback.name }}</p>
+            <p class="description">{{ feedback.message }}</p>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+
+<section class="feedback-form">
+    <div class="container-feedback">
+        <h2>Customer Feedback</h2>
+        <p>We value your opinion. Please share your feedback with us.</p>
+        <form action="/feedback" method="post">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="message">Message: </label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <label for="star_rating">Rate Us:</label>
+            <input type="number" id="star_rating" name="star_rating" min="1" max="5" required>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

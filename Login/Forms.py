@@ -1,5 +1,6 @@
-from wtforms import Form, StringField, RadioField, SelectField, TextAreaField, validators
+from wtforms import Form, StringField, RadioField, SelectField, TextAreaField, validators, IntegerField
 from wtforms.fields import EmailField, DateField
+from wtforms.validators import NumberRange
 
 
 class CreateUserForm(Form):
@@ -29,3 +30,9 @@ class CreateCustomerForm(Form):
     remarks = TextAreaField('Remarks', [validators.Optional()])
     password = StringField('Password', [validators.Length(min=1, max=150), validators.DataRequired()])
 
+class CreateFeedbackForm(Form):
+    name = StringField('name', [validators.Length(min=1, max=150), validators.DataRequired()])
+    star_rating = IntegerField('star_rating', validators=[NumberRange(min=1, max=5, message='Range Error')])
+    title = StringField('title', [validators.Length(min=1, max=150), validators.DataRequired()])
+    message = TextAreaField('message', [validators.length(max=200), validators.DataRequired()])
+    date_submitted = DateField('date_submitted', format='%Y-%m-%d')
