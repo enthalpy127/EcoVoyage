@@ -15,8 +15,8 @@ def generate_random_id():
 class Customer(User.User):
     count_id = 0
 
-    def __init__(self, username, first_name, last_name, gender, membership, remarks, email, date_joined, address, password):
-        super().__init__(first_name, last_name, gender, membership, remarks)
+    def __init__(self, username, first_name, last_name, gender, membership, email, date_joined, address, password):
+        #super().__init__(first_name, last_name, gender, membership='F', remarks='')
         Customer.count_id += 1  # This shit is useless
         self.__username = username
         self.__customer_id = generate_random_id()

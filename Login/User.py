@@ -15,11 +15,12 @@ class User:
     count_id = 0
 
     # initializer method
-    def __init__(self, first_name, last_name, gender, membership, remarks, password=''):
+    def __init__(self, first_name, last_name,username, gender, membership, remarks, password=''):
         User.count_id += 1 # This shit is useless
         self.__user_id = generate_random_id()
         self.__first_name = first_name
         self.__last_name = last_name
+        self.__username = username
         self.__gender = gender
         self.__membership = membership
         self.__remarks = remarks
@@ -46,6 +47,8 @@ class User:
 
     def get_password(self):
         return self.__password
+    def get_username(self):
+        return self.__username
 
     # mutator methods
     def set_user_id(self, user_id):

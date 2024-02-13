@@ -1,7 +1,7 @@
 
 import sys
 
-from EcoVoyage.Login.Forms import CreateFeedbackForm
+from Login.Forms import CreateFeedbackForm, CreateUserForm
 
 sys.path.append('../Login')
 from Login import User
@@ -51,6 +51,59 @@ dash_app1.layout = html.Div([
 
 app.static_folder = 'static'
 
+@app.route('/login', methods=['GET','POST'])
+def login():
+    #login(session)
+    error= None
+    customer_login_form =  Forms.CustomerLoginForm(request.form)
+    print(customer_login_form.changelogin.data)
+    print(customer_login_form.data)
+    if request.method == 'POST':
+        print("login form ok")
+        customers_dict = {}
+        db = shelve.open('customer.db', 'c')
+        password = customer_login_form.password.data
+        customers_dict = db['Customers']
+        for i in customers_dict:
+            print(customers_dict[i].get_username())
+            print(customers_dict[i].get_password())
+            if customers_dict[i].get_password() == password:
+                print(f"Customer {customers_dict[i].get_username} logged in")
+                session['Username'] = customer_login_form.username.data
+                session.permanent = True
+                return redirect(url_for('home'))
+            else:
+                print(customers_dict[i].get_password())
+                print(password)
+                error = "Username or password incorrect!"
+        db.close()
+    return render_template('Login_page.html', error=error)
+
+@app.route('/staff_login', methods=['GET','POST'])
+def staff_login():
+    error= None
+    customer_login_form =  Forms.CustomerLoginForm(request.form)
+    print(customer_login_form.changelogin.data)
+    print(customer_login_form.data)
+    if request.method == 'POST':
+        staff_dict = {}
+        db = shelve.open('staff.db', 'c')
+        password = customer_login_form.password.data
+        staff_dict = db['Staff']
+        if 'logout' in customer_login_form:
+            print("III")
+            session['Username'] = None
+        for i in staff_dict:
+            print(staff_dict[i])
+            if staff_dict[i].get_password() == password:
+                print(f"Staff {staff_dict[i].get_first_name()} logged in")
+                session['Username'] = customer_login_form.username.data
+                session.permanent = True
+                return redirect(url_for('show_orders'))
+            else:
+                error = "Username or password incorrect!"
+        db.close()
+    return render_template('Staff_Login_page.html')
 
 @app.route('/', methods=['GET','POST'])
 def home():
@@ -156,57 +209,7 @@ def countriespage():
         #login(session)end
     return render_template("Countries.html")
 
-@app.route('/Login_page', methods=['GET','POST'])
-def login_page():
-    #login(session)
-    error= None
-    customer_login_form =  Forms.CustomerLoginForm(request.form)
-    print(customer_login_form.changelogin.data)
-    print(customer_login_form.data)
-    if customer_login_form.logout.data != None:
-            print("III")
-            session['Username'] = None
-    if request.method == 'POST' and (customer_login_form.changelogin.data == 'customer'):
-        print("login form ok")
-        customers_dict = {}
-        db = shelve.open('customer.db', 'c')
-        password = customer_login_form.password.data
-        customers_dict = db['Customers']
-        print(customers_dict)
-        for i in customers_dict:
-            print(customers_dict[i])
-            if customers_dict[i].get_password() == password:
-                print(f"Customer {customers_dict[i].get_username} logged in")
-                session['Username'] = customer_login_form.username.data
-                session.permanent = True
-            else:
-                print(customers_dict[i].get_password())
-                print(password)
-                print(customers_dict[i])
-                error = "Username or password incorrect!"
-        db.close()
-    elif request.method == 'POST' and (customer_login_form.changelogin.data == 'staff'):
-        staff_dict = {}
-        db = shelve.open('staff.db', 'c')
-        password = customer_login_form.password.data
-        staff_dict = db['Staff']
-        if 'logout' in customer_login_form:
-            print("III")
-            session['Username'] = None
-        for i in staff_dict:
-            print(staff_dict[i])
-            if staff_dict[i][1] == password:
-                print(f"Staff {staff_dict[i][0]} logged in")
-                session['Username'] = customer_login_form.username.data
-                session.permanent = True
-            else:
-                print("Staff not found")
-                print(password)
-                print(staff_dict[i][1])
-                error = "Username or password incorrect!"
-        db.close()
-        #login(session)end
-    return render_template('Login_page.html')
+
 
 @app.route('/denmark', methods=['GET','POST'])
 def denmark():
@@ -419,76 +422,28 @@ def thailand():
 @app.route('/createUser', methods=['GET', 'POST'])
 def create_user():
 
-    #login(session)
-    error= None
-    customer_login_form =  Forms.CustomerLoginForm(request.form)
-    print(customer_login_form.changelogin.data)
-    print(customer_login_form.data)
-    if customer_login_form.logout.data != None:
-            print("III")
-            session['Username'] = None
-    if request.method == 'POST' and (customer_login_form.changelogin.data == 'customer'):
-        print("login form ok")
-        customers_dict = {}
-        db = shelve.open('customer.db', 'c')
-        password = customer_login_form.password.data
-        customers_dict = db['Customers']
-        print(customers_dict)
-        for i in customers_dict:
-            print(customers_dict[i])
-            if customers_dict[i].get_password() == password:
-                print(f"Customer {customers_dict[i].get_username} logged in")
-                session['Username'] = customer_login_form.username.data
-                session.permanent = True
-            else:
-                print(customers_dict[i].get_password())
-                print(password)
-                print(customers_dict[i])
-                error = "Username or password incorrect!"
-        db.close()
-    elif request.method == 'POST' and (customer_login_form.changelogin.data == 'staff'):
-        staff_dict = {}
-        db = shelve.open('staff.db', 'c')
-        password = customer_login_form.password.data
-        staff_dict = db['Staff']
-        if 'logout' in customer_login_form:
-            print("III")
-            session['Username'] = None
-        for i in staff_dict:
-            print(staff_dict[i])
-            if staff_dict[i][1] == password:
-                print(f"Staff {staff_dict[i][0]} logged in")
-                session['Username'] = customer_login_form.username.data
-                session.permanent = True
-            else:
-                print("Staff not found")
-                print(password)
-                print(staff_dict[i][1])
-                error = "Username or password incorrect!"
-        db.close()
-        #login(session)end
-
     create_user_form = CreateUserForm(request.form)
     if request.method == 'POST' and create_user_form.validate():
         users_dict = {}
-        db = shelve.open('user.db', 'c')
+        db = shelve.open('staff.db', 'c')
 
         try:
-            users_dict = db['Users']
+            users_dict = db['Staff']
         except:
-            print("Error in retrieving Users from user.db.")
+            print("Error in retrieving Users from staff.db.")
 
         user = User.User(create_user_form.first_name.data,
                          create_user_form.last_name.data,
+                         create_user_form.username.data,
                          create_user_form.gender.data,
                          create_user_form.membership.data,
                          create_user_form.remarks.data,
                          create_user_form.password.data)
         users_dict[user.get_user_id()] = user
-        db['Users'] = users_dict
+        db['Staff'] = users_dict
 
         # Test codes
-        users_dict = db['Users']
+        users_dict = db['Staff']
         user = users_dict[user.get_user_id()]
         print(user.get_first_name(), user.get_last_name(), "was stored in user.db successfully with user_id ==",
               user.get_user_id())
@@ -567,7 +522,6 @@ def create_customer():
                                      create_customer_form.last_name.data,
                                      create_customer_form.gender.data,
                                      create_customer_form.membership.data,
-                                     create_customer_form.remarks.data,
                                      create_customer_form.email.data,
                                      create_customer_form.birthday.data,
                                      create_customer_form.address.data,
@@ -577,8 +531,6 @@ def create_customer():
 
         customers_dict = db['Customers']
         customer = customers_dict[customer.get_customer_id()]
-        print(customer.get_first_name(), customer.get_last_name(), "was stored in user.db successfully with user_id ==",
-              customer.get_customer_id())
 
         db.close()
         return redirect('/')
@@ -685,8 +637,17 @@ def test():
     return render_template('staffpage.html')
 
 
-@app.route('/staff_booking_page', methods=['GET'])
+@app.route('/staff_booking_page', methods=['GET','POST'])
 def show_orders():
+    if request.method == 'POST':
+        staff_dict = {}
+        db = shelve.open('staff.db', 'c')
+        staff_dict = db['Staff']
+        if 'logout' in request.form:
+            print("III")
+            session['Username'] = None
+            return redirect(url_for('home'))
+
     with shelve.open('order_data') as db:  # Replace 'order_db' with your database name
         orders = list(db.values())
         orders.reverse()

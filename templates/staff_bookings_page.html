@@ -16,6 +16,173 @@
       color: #ccc;
       opacity: 0.5;
   }
+  body {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'MuseoModerno', sans-serif;
+}
+
+.nav-bar {
+    background-color: #1e704b;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav-bar .logo {
+    padding: 1px;
+}
+
+.nav-bar .logo h1 {
+    color: white;
+    padding-left: 10px;
+}
+
+.nav-bar .nav-links {
+    margin-left: auto;
+}
+
+.nav-bar .nav-links ul {
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: end;
+}
+
+.nav-bar .nav-links li {
+    list-style-type: none;
+}
+
+.nav-bar .nav-links a {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 25px;
+}
+.nav-bar .nav-links #loginbtn {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 20px;
+    background-color:#1e704b;
+    border:none;
+    cursor:pointer;
+    font-family: 'MuseoModerno', sans-serif;
+    font-size:20px;
+}
+
+h1{
+    text-align: center;
+}
+.login{
+    background-color:white;
+    text-align:center;
+    width:800px;
+    position:relative;
+}
+#login>form{
+    color: green;
+    position: relative;
+    text-align: center;
+    width:fit-content;
+}
+.background1 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+
+.login {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+}
+input[type=text],input[type=email],input[type=number],input[type=date],input[type=tel],#textarea1,input[type=password]{
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+label{
+    font-size: 20px;
+}
+input[type=submit]{
+    background-color: green;
+    color:white;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 100px;
+    height:30px;
+}
+.api{
+    position: relative;
+    text-align: center;
+    width:325px;
+    color: white;
+    cursor: pointer;
+}
+.cancel{
+    width:50%;
+    height:100%;    
+}
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  font-size: 16px;
+  border: none;
+  width:135px;
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  display: inline-block;
+  left:0.01px;
+  top:425px;
+  cursor:pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #f1f1f1;
+  width:inherit;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 30px;
+  text-decoration: none;
+  display: block;
+}
+#login_choice {
+    position:relative;
+}
+
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+h1>a, h1>a:hover{
+    text-decoration: none;
+    color: white;
 </style>
 <script>
   function showPreviousOrders() {
@@ -46,7 +213,7 @@
 
 <body>
     <div class="topnav">
-        <a class="logo" href="#home">EcoVoyage</a>
+        <a class="logo" href="/">EcoVoyage</a>
         <div class="topnav-right">
             <a href="#"><span class="glyphicon glyphicon-comment"></span> Chat</a>
             <a href="#"><span class="glyphicon glyphicon-envelope"></span> Email</a>
@@ -54,10 +221,19 @@
 
             <img src="{{ url_for('static', filename='Blue and White Elegant Travel Logo.png') }}" style="height:50px; border-radius: 50%; border: 1px solid #c7c7c7;">
 
-            <a href="#" style="padding-right: 20px;">Username<span class="glyphicon glyphicon-menu-down"></span></a>
+            <a href="#" style="padding-right: 20px;" onclick="toggle_logout()">{{ session['Username'] }}<span class="glyphicon glyphicon-menu-down"></span></a>
 
         </div>
     </div>
+    <div id="logoutpage" class="background1" style="display: none;opacity: 0.96;">
+      <div class="login" id="user_login">
+          <h1>Are you sure to log out?</h1>
+          <button onclick="toggle_logout()" class="X" style="z-index:1;position:relative;left:375px;top:-70px;border:none;background-color:white;cursor:pointer;font-size:22px;"> X </button>
+          <form method="POST"><fieldset class="field">
+              <input for="logout" name="logout" class="cancel" type="submit" value="logout">
+          </fieldset>
+          </form>
+      </div></div>
 
 
 <div class="parent">
@@ -202,6 +378,16 @@
 
 
 <script>
+  function toggle_logout() {
+    if (document.getElementById("logoutpage").style.display == "block"){
+      document.getElementById("logoutpage").style.display = "none"
+    }
+    else{
+      document.getElementById("logoutpage").style.display = "block"
+    }
+  }
+
+        
 
 
     function confirmDelete(id) {

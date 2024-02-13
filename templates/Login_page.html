@@ -113,21 +113,21 @@ button{
     </style>
 </head>
 <body>
-    <form>
+    <form method="POST">
         <h3>Login Here</h3>
 
         <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username">
+        <input type="text" placeholder="Email or Phone" id="username" name="username">
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
+        <input type="password" placeholder="Password" id="password" name="password">
 
         <button onclick="login()">Log In</button>
         <p id="signup-notice">Don't have an account? <a href="/createCustomer">Sign Up</a></p>
         <div class="social">
           <div class="go"><i class="fab fa-google"></i> Login with Google</div>
         </div>
-        <p id="staff-login-notice">Click here for <a href="/Staff_Login_page">Staff Login</a></p>
+        <p id="staff-login-notice">Click here for <a href="/staff_login">Staff Login</a></p>
     </form>
     <script>
       function login() {

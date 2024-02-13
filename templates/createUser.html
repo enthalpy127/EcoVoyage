@@ -14,13 +14,16 @@
     {{ render_field(form.last_name, class="form-control") }}
   </div>
   <div class="form-group">
+    {{ render_field(form.username, class="form-control") }}
+  </div>
+  <div class="form-group">
     {{ render_field(form.password, class="form-control") }}
   </div>
   <div class="form-group">
     {{ render_field(form.gender, class="form-control") }}
   </div>
-  <div class="form-group">
-    {{ render_field(form.membership, class="form-check", style="list-style-type:none") }}
+  <div class="form-group" style="display:none;">
+    {{ render_field(form.membership, class="form-check", style="list-style-type:none;display:none;") }}
   </div>
   <div id="prof">
     <div class="form-group">
