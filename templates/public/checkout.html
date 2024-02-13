@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buy cool new product</title>
+    <link rel="stylesheet" href="checkout11.css">
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <section>
+      <div class="product">
+        <img src="{{ url_for('static', filename='review1.jpg') }}" alt="Givskud Zoo Zootopia" />
+        <div class="description">
+          <h3>Givskud Zoo Zootopia</h3>
+          <h5>$250.00</h5>
+        </div>
+      </div>
+      <form action="/create-checkout-session" method='POST'>
+        <button type="submit" id="checkout-button">Checkout</button>
+      </form>
+    </section>
+  </body>
+</html>
